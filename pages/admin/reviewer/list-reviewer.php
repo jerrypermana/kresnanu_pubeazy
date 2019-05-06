@@ -19,7 +19,7 @@ if ($_SESSION['group_session'] == 'admin') {
 
                 <div class="col-md-3" align="right">
                     <a href="<?php echo $base_url; ?>/index.php?p=add-reviewer" class="btn btn-block btn-primary">
-                        <i class="fa fa-plus"></i> Add Speakers
+                        <i class="fa fa-plus"></i> Add Reviewer
                     </a>
                 </div>
                 <div class="col-md-3" align="right">

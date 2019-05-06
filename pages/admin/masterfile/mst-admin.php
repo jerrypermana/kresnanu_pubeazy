@@ -33,7 +33,7 @@ if ($_SESSION['group_session'] == 'admin') {
                 <div class="col-md-12">
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                            <h3 class="box-title"><i class="fa fa-user-secret"></i> List Reviewer</h3>
+                            <h3 class="box-title"><i class="fa fa-user-secret"></i> List Pengguna Sistem</h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -49,7 +49,7 @@ if ($_SESSION['group_session'] == 'admin') {
                                     <div class="box-header">
                                         <br>
                                         <div class="callout callout-info">
-                                            <span>Reviewer Login : <code>http://[alamat_website]/url.php?p=admin-login</code></span>
+                                            <span>Pengguna Sistem Login : <code>http://[alamat_website]/url.php?p=admin-login</code></span>
                                         </div>
 
                                     </div>
@@ -163,29 +163,29 @@ if ($_SESSION['group_session'] == 'admin') {
 
         <!-- TUTUP MODAL SUBJECT -->
         <!-- <script>
-                                    $(document).ready(function() {
+                                        $(document).ready(function() {
 
                  
-                                        $('#add_admin').submit(function(e) {
-                                                        data = $('#add_admin').serialize();
-                                                        $.ajax({
-                                                            type: "POST",
-                                                            url: "data_api/save-admin.php",
-                                                            data: data,
-                                                            dataType: "json",
-                                                            success: function(result) {
-                                                                if (result.success) {
-                                                                    alert(result.msg);
-                                                                    $('#ModalAddAdmin').modal('hide');
-                                                                    $('#add_admin')[0].reset();
+                                            $('#add_admin').submit(function(e) {
+                                                            data = $('#add_admin').serialize();
+                                                            $.ajax({
+                                                                type: "POST",
+                                                                url: "data_api/save-admin.php",
+                                                                data: data,
+                                                                dataType: "json",
+                                                                success: function(result) {
+                                                                    if (result.success) {
+                                                                        alert(result.msg);
+                                                                        $('#ModalAddAdmin').modal('hide');
+                                                                        $('#add_admin')[0].reset();
+                                                                    }
                                                                 }
-                                                            }
+                                                            });
+                                                            e.preventDefault();
                                                         });
-                                                        e.preventDefault();
-                                                    });
-                                    })
-                                </script> -->
-       
+                                        })
+                                    </script> -->
+
     <?php
 }
 ?>

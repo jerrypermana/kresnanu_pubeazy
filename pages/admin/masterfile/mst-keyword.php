@@ -4,68 +4,76 @@ if ($_SESSION['group_session'] == 'admin') {
     <!-- Content Header (Page header) -->
     <section class="content-header">
 
-
+        <h1>
+            <i class="fa fa-key"></i> Keyword
+        </h1>
     </section>
     <br>
     <!-- Main content -->
     <section class="content">
+
         <div class="row">
             <!-- left column -->
             <div class="col-md-12">
-                <!-- general form elements -->
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3>
-                            List Keyword
-                        </h3>
-                    </div>
 
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="row">
-
-                        </div>
-                        <div class="col-md-9" align="right">
-
-                        </div>
-                        <div class="col-md-3" align="right">
-                        </div>
-                        <br>
-                        <br>
-                        <div class="col-md-12">
-
-                            <!-- form start -->
-                            <div class="box">
-
-                                <div class="box-header">
-                                    <br>
-                                    <div class="col-md-8">
-                                    </div>
-                                    <div class="col-md-2" align="right">
-                                        <button type="button" class="btn btn-primary" data-target="#ModalAdd" data-toggle="modal"> <i class="fa fa-plus"></i> Tambah Keyword</button>
-                                    </div>
-                                    <div class="col-md-2" align="right">
-                                        <a href="<?php echo $base_url; ?>/index.php?p=mst-keyword" class="btn btn-block btn-primary">
-                                            <i class="fa fa-list"></i> Daftar Keyword
-                                        </a>
-                                    </div>
-
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="box-body">
-                                    <table id="paper_table" data-show-refresh="true" data-classes="table table-bordered" data-pagination="true" data-id-field="id" data-page-list="[10, 25, 50, 100, ALL]" data-side-pagination="server"></table>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
-
-                        </div>
-                    </div>
+                <div class="col-md-3">
+                <button type="button" class="btn btn-block btn-primary" data-target="#ModalAdd" data-toggle="modal"> <i class="fa fa-plus"></i> Tambah Keyword</button>
                 </div>
+                <div class="col-md-3">
+                    <a href="<?php echo $base_url; ?>/index.php?p=mst-keyword" class="btn btn-block btn-primary">
+                        <i class="fa fa-list"></i> Daftar Keyword
+                    </a>
+                </div>
+                <div class="col-md-6">
+                </div>
+
+                <br>
+                <br>
+                <div class="col-md-12">
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><i class="fa fa-user-secret"></i> List Keyword</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <div class="box-header">
+                                        <br>
+                                        <!-- <div class="callout callout-info">
+                                                    <span>Pengguna Sistem Login : <code>http://[alamat_website]/url.php?p=admin-login</code></span>
+                                                </div> -->
+
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body table-responsive no-padding">
+                                        <div class="box-body">
+                                            <table id="paper_table" data-show-refresh="true" data-classes="table table-bordered" data-pagination="true" data-id-field="id" data-page-list="[10, 25, 50, 100, ALL]" data-side-pagination="server"></table>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+
+
+
             </div>
-            <!-- /.box -->
         </div>
-        </div>
-        </div>
+
+
         <!-- Modal Popup untuk Add Keyword-->
         <div id="ModalAdd" name='myform' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">

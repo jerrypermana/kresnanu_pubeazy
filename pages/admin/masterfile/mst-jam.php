@@ -4,7 +4,7 @@ if ($_SESSION['group_session'] == 'admin') {
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Daftar Jadwal Jam
+            <i class="fa fa-clock-o"></i> Time Schedule
         </h1>
 
     </section>
@@ -15,25 +15,34 @@ if ($_SESSION['group_session'] == 'admin') {
         <div class="row">
             <!-- left column -->
             <div class="col-md-12">
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-block btn-primary" data-target="#ModalAddJam" data-toggle="modal"> <i class="fa fa-plus"></i> Add Time</button>
+                </div>
+                <div class="col-md-3">
+
+                    <a href="<?php echo $base_url; ?>/index.php?p=mst-jam" class="btn btn-block btn-primary">
+                        <i class="fa fa-list"></i> List Time
+                    </a>
+                </div>
+                <div class="col-md-6">
+                </div>
+
+                <br>
+                <br>
 
 
                 <div class="col-md-12">
 
                     <!-- form start -->
-                    <div class="box">
-                        <div class="box-header">
-                            <br>
-                            <div class="col-md-8">
-                            </div>
-                            <div class="col-md-2" align="right">
-                                <button type="button" class="btn btn-primary" data-target="#ModalAddJam" data-toggle="modal"> <i class="fa fa-plus"></i> Tambah Jam</button>
-                            </div>
-                            <div class="col-md-2" align="right">
-                                <a href="<?php echo $base_url; ?>/index.php?p=mst-jam" class="btn btn-block btn-primary">
-                                    <i class="fa fa-list"></i> Daftar Jam
-                                </a>
-                            </div>
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><i class="fa fa-user-secret"></i> List Time Schedule</h3>
 
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -48,15 +57,7 @@ if ($_SESSION['group_session'] == 'admin') {
 
 
                                 $select = mysqli_query($konek, "SELECT * FROM jadwal_jam");
-
-
-
-
                                 while ($row_jam = mysqli_fetch_array($select)) {
-
-
-
-
                                     echo "<tbody>
                                             <tr>
                                                 <td >$row_jam[jam]</td>
@@ -84,7 +85,7 @@ if ($_SESSION['group_session'] == 'admin') {
                 </div>
             </div>
         </div>
-        </div>
+        
         <!-- /.box -->
 
 
@@ -93,8 +94,7 @@ if ($_SESSION['group_session'] == 'admin') {
         <!-- Input addon -->
 
 
-        </div>
-        </div>
+        
         <!-- Modal Popup untuk Add SUbject-->
         <div id="ModalAddJam" name='myform' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -172,8 +172,7 @@ if ($_SESSION['group_session'] == 'admin') {
                 });
             })
         </script>
-        </div>
-        </div>
+       
     <?php
 }
 ?>

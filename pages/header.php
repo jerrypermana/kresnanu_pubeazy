@@ -226,7 +226,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                 </li>
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=mst-jam">
-                                        <i class="fa fa-clock-o"></i> <span>Jam</span>
+                                        <i class="fa fa-clock-o"></i> <span>Time</span>
                                     </a>
                                 </li>
                                 <li>
@@ -236,7 +236,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                 </li>
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=mst-ruang">
-                                        <i class="fa fa-building-o"></i> <span>Ruang</span>
+                                        <i class="fa fa-building-o"></i> <span>Room</span>
                                     </a>
                                 </li>
                                 <!-- <li>
@@ -246,7 +246,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                                 </li> -->
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=mst-admin">
-                                        <i class="fa fa-user"></i> <span>Admin</span>
+                                        <i class="fa fa-user"></i> <span>Administrator</span>
                                     </a>
                                 </li>
                             </ul>
@@ -323,14 +323,6 @@ if ($_SESSION['group_session'] == 'peserta') {
                                     </a>
                                 </li>
                                 <!-- <li>
-<<<<<<< HEAD
-                                                    <a href="<?php echo $base_url; ?>/index.php?p=setting-loa">
-                                                        <i class="fa fa-envelope"></i> <span>LOA</span>
-                                                    </a>
-                                                </li>
-
-                                                </li> -->
-=======
                                     <a href="<?php echo $base_url; ?>/index.php?p=setting-loa">
                                         <i class="fa fa-envelope"></i> <span>LOA</span>
                                     </a>
@@ -340,7 +332,6 @@ if ($_SESSION['group_session'] == 'peserta') {
                                         <i class="fa fa-cog"></i> <span>Pengaturan Aplikasi</span>
                                     </a>
                                 </li>
->>>>>>> master
 
                             </ul>
                         </li>

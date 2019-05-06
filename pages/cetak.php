@@ -158,5 +158,5 @@ $pdf->writeHTML($body, true, false, true, false, '');
 $pdf->write1DBarcode(''.$data['member_id'].'', 'C128A', '', '', '', 15, 0.28, $style, 'N');
 
 // output
-$pdf->Output();
+$pdf->Output(''.$data['member_id'].'.pdf');
 ?>

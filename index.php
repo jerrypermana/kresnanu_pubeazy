@@ -3,7 +3,7 @@
 <?php
 
 $domain = $_SERVER['SERVER_NAME'];
-$base_url = "http://" .$domain ."/pubeazy" ;
+$base_url = "http://" .$domain ."/kresnanu_pubeazy" ;
 
 // Include Header website
 include "header.php";

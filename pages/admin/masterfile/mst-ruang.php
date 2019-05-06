@@ -4,63 +4,73 @@ if ($_SESSION['group_session'] == 'admin') {
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Daftar Ruang
+            <i class="fa fa-home"></i> Room Conference
         </h1>
 
     </section>
-    </br>
+    <br>
 
     <!-- Main content -->
     <section class="content">
         <div class="row">
             <!-- left column -->
             <div class="col-md-12">
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-block btn-primary" data-target="#ModalAddRuang" data-toggle="modal"> <i class="fa fa-plus"></i> Add Room Conference</button>
+
+                </div>
+                <div class="col-md-3">
+
+                    <a href="<?php echo $base_url; ?>/index.php?p=mst-ruang" class="btn btn-block btn-primary">
+                        <i class="fa fa-list"></i> List Room Conference
+                    </a>
+                </div>
+                <div class="col-md-6">
+                </div>
+
+                <br>
+                <br>
 
 
                 <div class="col-md-12">
 
                     <!-- form start -->
-                    <div class="box">
-                        <div class="box-header">
-                            <br>
-                            <div class="col-md-6">
-                            </div>
-                            <div class="col-md-3" align="right">
-                                <button type="button" class="btn btn-block btn-primary" data-target="#ModalAddRuang" data-toggle="modal"> <i class="fa fa-plus"></i> Tambah Ruang</button>
-                            </div>
-                            <div class="col-md-3" align="right">
-                                <a href="<?php echo $base_url; ?>/index.php?p=mst-ruang" class="btn btn-block btn-primary">
-                                    <i class="fa fa-list"></i> Daftar Ruang
-                                </a>
-                            </div>
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><i class="fa fa-home"></i> List Room Conference</h3>
 
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
                         </div>
-                        <!-- /.box-header -->
                         <div class="box-body">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%; text-align: center;">NAMA RUANG</th>
-                                        <th style="width: 20%; text-align: center;">KUOTA</th>
-                                        <th style="width: 20%; text-align: center;">INPUT DATE</th>
-                                        <th style="width: 20%; text-align: center;">LAST UPDATE</th>
-                                        <th style="width: 20%; text-align: center;">ACTION</th>
-                                    </tr>
-                                </thead>
-                                <?php
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 20%; text-align: center;">NAMA RUANG</th>
+                                            <th style="width: 20%; text-align: center;">KUOTA</th>
+                                            <th style="width: 20%; text-align: center;">INPUT DATE</th>
+                                            <th style="width: 20%; text-align: center;">LAST UPDATE</th>
+                                            <th style="width: 20%; text-align: center;">ACTION</th>
+                                        </tr>
+                                    </thead>
+                                    <?php
 
 
-                                $select = mysqli_query($konek, "SELECT * FROM mst_ruang");
-
-
-
-
-                                while ($row_ruang = mysqli_fetch_array($select)) {
+                                    $select = mysqli_query($konek, "SELECT * FROM mst_ruang");
 
 
 
 
-                                    echo "<tbody>
+                                    while ($row_ruang = mysqli_fetch_array($select)) {
+
+
+
+
+                                        echo "<tbody>
                                             <tr>
                                                 <td >$row_ruang[nama_ruang]</td>
                                                 <td >$row_ruang[kuota]</td>
@@ -72,40 +82,35 @@ if ($_SESSION['group_session'] == 'admin') {
                                                 </td>
                                             </tr>
                                         </tbody>";
-                                };
-                                ?>
+                                    };
+                                    ?>
 
-                                <tfoot>
-                                    <tr>
-                                        <th>NAMA RUANG</th>
-                                        <th>KUOTA</th>
-                                        <th>INPUT DATE</th>
-                                        <th>LAST UPDATE</th>
+                                    <tfoot>
+                                        <tr>
+                                            <th>NAMA RUANG</th>
+                                            <th>KUOTA</th>
+                                            <th>INPUT DATE</th>
+                                            <th>LAST UPDATE</th>
 
-                                        <th>ACTION</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                                            <th>ACTION</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
                         </div>
-                        <!-- /.box-body -->
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
         <!-- /.box -->
 
 
         <!-- /.box -->
 
-        <!-- Input addon -->
-
-
-        </div>
-        </div>
-         <!-- Modal Popup untuk Add SUbject-->
-         <div id="ModalAddRuang" name='myform' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!-- Modal Popup untuk Add SUbject-->
+        <div id="ModalAddRuang" name='myform' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -149,33 +154,32 @@ if ($_SESSION['group_session'] == 'admin') {
                 </div>
             </div>
         </div>
-       
+
         <!-- TUTUP MODAL SUBJECT -->
         <script>
             $(document).ready(function() {
 
-                 
+
                 $('#add_ruang').submit(function(e) {
-                                data = $('#add_ruang').serialize();
-                                $.ajax({
-                                    type: "POST",
-                                    url: "data_api/save-ruang.php",
-                                    data: data,
-                                    dataType: "json",
-                                    success: function(result) {
-                                        if (result.success) {
-                                            alert(result.msg);
-                                            $('#ModalAddRuang').modal('hide');
-                                            $('#add_ruang')[0].reset();
-                                        }
-                                    }
-                                });
-                                e.preventDefault();
-                            });
+                    data = $('#add_ruang').serialize();
+                    $.ajax({
+                        type: "POST",
+                        url: "data_api/save-ruang.php",
+                        data: data,
+                        dataType: "json",
+                        success: function(result) {
+                            if (result.success) {
+                                alert(result.msg);
+                                $('#ModalAddRuang').modal('hide');
+                                $('#add_ruang')[0].reset();
+                            }
+                        }
+                    });
+                    e.preventDefault();
+                });
             })
         </script>
-        </div>
-        </div>
+     
     <?php
 }
 ?>

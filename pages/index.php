@@ -7,7 +7,7 @@
 <!--  body -->
 <?php
 $domain = $_SERVER['SERVER_NAME'];
-$base_url = "http://" . $domain . "/pubeazy/pages";
+$base_url = "http://" . $domain . "/kresnanu_pubeazy/pages";
 include "header.php";
 if (isset($_GET["p"])) {
   $id = $_GET["p"];
