@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 05 Mei 2019 pada 08.43
+-- Generation Time: 06 Mei 2019 pada 20.08
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -41,7 +41,7 @@ CREATE TABLE `account_bank` (
 
 INSERT INTO `account_bank` (`kode_bank`, `rekening`, `nama_bank`, `atas_nama`) VALUES
 (1, 861213121, 'Bank Mandiri', 'Muhammad Jerry Permana '),
-(2, 32432422, 'Bank BNI', 'PubEazy');
+(3, 123456789, 'Bank BNI', 'Jerry Permana');
 
 -- --------------------------------------------------------
 
@@ -71,6 +71,31 @@ INSERT INTO `conference` (`konferensi_id`, `nama_konferensi`, `penyelenggara`, `
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `contact_us`
+--
+
+CREATE TABLE `contact_us` (
+  `contact_id` smallint(2) NOT NULL,
+  `contact_title` varchar(50) DEFAULT NULL,
+  `contact_text` varchar(100) DEFAULT NULL,
+  `address_title` varchar(50) DEFAULT NULL,
+  `address_text` varchar(150) DEFAULT NULL,
+  `phone_title` varchar(50) DEFAULT NULL,
+  `phone_text` varchar(100) DEFAULT NULL,
+  `email_title` varchar(50) DEFAULT NULL,
+  `email_text` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `contact_us`
+--
+
+INSERT INTO `contact_us` (`contact_id`, `contact_title`, `contact_text`, `address_title`, `address_text`, `phone_title`, `phone_text`, `email_title`, `email_text`) VALUES
+(1, 'Contact Us', 'Nihil officia ut sint molestiae tenetur.', 'Address', 'Universitas NU Surabaya', 'Phone Number', '(031) 8479070', 'Email', 'pubeazy@kresnanusantara.ac.id');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `homepage`
 --
 
@@ -89,7 +114,7 @@ CREATE TABLE `homepage` (
 --
 
 INSERT INTO `homepage` (`id`, `about_title`, `about_text`, `location_title`, `location_text`, `when_title`, `when_text`) VALUES
-(1, 'PubEazy Conference', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \r\n', 'Event Location', 'Jakarta Selatan Jakarta, Indonesia (021) 228-2123', 'Event Date', 'Monday to Wednesday, 10-12 December');
+(1, 'PubEazy Conference', 'In alias aperiam. Placeat tempore facere. Officiis voluptate ipsam vel eveniet est dolor et totam porro. ', 'Event Location', 'Universitas NU Surabaya', 'When', '10 - 09 August 2019');
 
 -- --------------------------------------------------------
 
@@ -221,8 +246,7 @@ CREATE TABLE `mst_keyword` (
 INSERT INTO `mst_keyword` (`keyword_id`, `keyword`, `input_date`, `last_update`) VALUES
 (45, 'KANKER', '2019-05-04', '2019-05-04'),
 (46, 'OSTEOPOROSIS', '2019-05-04', '2019-05-04'),
-(47, 'FISIKA', '2019-05-04', '2019-05-04'),
-(48, 'MATEMATIKA', '2019-05-04', '2019-05-04');
+(47, 'FISIKA', '2019-05-04', '2019-05-04');
 
 -- --------------------------------------------------------
 
@@ -263,8 +287,7 @@ CREATE TABLE `mst_subject` (
 --
 
 INSERT INTO `mst_subject` (`subject_id`, `subject`, `input_date`, `last_update`) VALUES
-(15, 'PHILOSOPHY', '2019-05-04', '2019-05-04'),
-(16, 'MATEMATIKA', '2019-05-04', '2019-05-04');
+(17, 'PHILOSOPHY', '2019-05-06', '2019-05-06');
 
 -- --------------------------------------------------------
 
@@ -584,6 +607,12 @@ ALTER TABLE `conference`
   ADD PRIMARY KEY (`konferensi_id`);
 
 --
+-- Indexes for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  ADD PRIMARY KEY (`contact_id`);
+
+--
 -- Indexes for table `homepage`
 --
 ALTER TABLE `homepage`
@@ -717,13 +746,19 @@ ALTER TABLE `transaksi_presenter`
 -- AUTO_INCREMENT for table `account_bank`
 --
 ALTER TABLE `account_bank`
-  MODIFY `kode_bank` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kode_bank` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `conference`
 --
 ALTER TABLE `conference`
   MODIFY `konferensi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  MODIFY `contact_id` smallint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `homepage`
@@ -765,7 +800,7 @@ ALTER TABLE `mst_email`
 -- AUTO_INCREMENT for table `mst_keyword`
 --
 ALTER TABLE `mst_keyword`
-  MODIFY `keyword_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `keyword_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `mst_ruang`
@@ -777,7 +812,7 @@ ALTER TABLE `mst_ruang`
 -- AUTO_INCREMENT for table `mst_subject`
 --
 ALTER TABLE `mst_subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `paket_konferensi`

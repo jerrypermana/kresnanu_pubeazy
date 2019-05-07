@@ -275,25 +275,11 @@ if ($_SESSION['group_session'] == 'peserta') {
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-
-
-
-                                <!-- <li>
-                                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-loi">
-                                                        <i class="fa fa-line-chart"></i> <span>Statistik</span>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-loi">
-                                                        <i class="fa fa-file-o"></i> <span>Letter Of Invititation (LOI)</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-loi">
-                                                        <i class="fa fa-file-o"></i> <span>Letter Of Accepted (LOA)</span>
-                                                    </a>
-                                                </li> -->
+                            <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-fullpaper">
+                                        <i class="fa fa-file-o"></i> <span>Full Paper</span>
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=rep-presenter">
                                         <i class="fa fa-file-o"></i> <span>Presenter</span>
@@ -328,8 +314,8 @@ if ($_SESSION['group_session'] == 'peserta') {
                                     </a>
                                 </li> -->
                                 <li>
-                                    <a href="#">
-                                        <i class="fa fa-cog"></i> <span>Pengaturan Aplikasi</span>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=system-setting">
+                                        <i class="fa fa-cog"></i> <span>System Setting</span>
                                     </a>
                                 </li>
 

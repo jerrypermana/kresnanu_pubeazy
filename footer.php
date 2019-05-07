@@ -36,11 +36,9 @@
                     <div class="col-lg-3 col-md-6 footer-contact">
                         <h4>Contact Us</h4>
                         <p>
-                            A108 Adam Street <br>
-                            New York, NY 535022<br>
-                            United States <br>
-                            <strong>Phone:</strong> +1 5589 55488 55<br>
-                            <strong>Email:</strong> info@example.com<br>
+                        <?php echo $data_contact['address_text']; ?><br>
+                            <strong>Phone:</strong><?php echo $data_contact['phone_text']; ?><br>
+                            <strong>Email:</strong> <?php echo $data_contact['phone_text']; ?><br>
                         </p>
 
                         <div class="social-links">
@@ -59,16 +57,10 @@
 
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong>TheEvent</strong>. All Rights Reserved
+                &copy; Copyright <strong>PubEazy</strong>
             </div>
             <div class="credits">
-                <!--
-          All the links in the footer should remain intact.
-          You can delete the links only if you purchased the pro version.
-          Licensing information: https://bootstrapmade.com/license/
-          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=TheEvent
-        -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+              
             </div>
         </div>
     </footer><!-- #footer -->

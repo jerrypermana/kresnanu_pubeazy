@@ -13,6 +13,9 @@ $end_conf = date('d F Y', strtotime($row['end_date']));
 $homepage      = mysqli_query($konek, "SELECT * FROM homepage LIMIT 1");
 $data_homepage = mysqli_fetch_array($homepage);
 
+$contact_us      = mysqli_query($konek, "SELECT * FROM contact_us LIMIT 1");
+$data_contact  = mysqli_fetch_array($contact_us);
+
 ?>
 <br>
 <section id="intro">
@@ -101,8 +104,8 @@ $data_homepage = mysqli_fetch_array($homepage);
         <div class="container">
 
             <div class="section-header">
-                <h2>Contact Us</h2>
-                <p>Nihil officia ut sint molestiae tenetur.</p>
+                <h2><?php echo $data_contact['contact_title']; ?></h2>
+                <p><?php echo $data_contact['contact_text']; ?></p>
             </div>
 
             <div class="row contact-info">
@@ -110,24 +113,24 @@ $data_homepage = mysqli_fetch_array($homepage);
                 <div class="col-md-4">
                     <div class="contact-address">
                         <i class="ion-ios-location-outline"></i>
-                        <h3>Address</h3>
-                        <address>A108 Adam Street, NY 535022, USA</address>
+                        <h3><?php echo $data_contact['address_title']; ?></h3>
+                        <address><?php echo $data_contact['address_text']; ?></address>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="contact-phone">
                         <i class="ion-ios-telephone-outline"></i>
-                        <h3>Phone Number</h3>
-                        <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+                        <h3><?php echo $data_contact['phone_title']; ?></h3>
+                        <p><a href="<?php echo $data_contact['phone_text']; ?>"><?php echo $data_contact['phone_text']; ?></a></p>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="contact-email">
                         <i class="ion-ios-email-outline"></i>
-                        <h3>Email</h3>
-                        <p><a href="mailto:info@example.com">info@example.com</a></p>
+                        <h3><?php echo $data_contact['email_title']; ?></h3>
+                        <p><a href="mailto:<?php echo $data_contact['email_text']; ?>"><?php echo $data_contact['email_text']; ?></a></p>
                     </div>
                 </div>
 

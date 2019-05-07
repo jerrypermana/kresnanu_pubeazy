@@ -75,7 +75,9 @@ if (isset($_GET["p"])) {
   //MODUL PELAPORAN//
   elseif ($id == "rep-presenter") {
     include 'admin/reporting/rep-presenter.php';
-  } elseif ($id == "rep-peserta") {
+  } elseif ($id == "rep-fullpaper") {
+    include 'admin/reporting/rep-fullpaper.php';
+  }elseif ($id == "rep-peserta") {
     include 'admin/reporting/rep-peserta.php';
   }//MODUL REVIEWER//
   elseif ($id == "list-reviewer") {
@@ -95,6 +97,8 @@ if (isset($_GET["p"])) {
     include 'admin/system-setting/set-add-speakers.php';
   } elseif ($id == "edit-speakers") {
     include 'admin/system-setting/set-edit-speakers.php';
+  }elseif ($id == "system-setting") {
+    include 'admin/system-setting/system-setting.php';
   }
   // START MODUL PRESENTER
   elseif ($id == "dashboard-presenter") {
