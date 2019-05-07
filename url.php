@@ -28,6 +28,8 @@ if (isset($_GET["p"])) {
         include 'login-reviewer.php';
     } elseif ($id == "login-admin") {
         include 'login-admin.php';
+    } elseif ($id == "speaker-detail") {
+        include 'speaker-detail.php';
     }else {
         include 'index.php';
     }

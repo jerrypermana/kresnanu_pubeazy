@@ -68,15 +68,7 @@ if ($_SESSION['group_session'] == 'admin') {
                                 };
                                 ?>
 
-                                <tfoot>
-                                    <tr>
-                                        <th>NO ANGGOTA</th>
-                                        <th>NAMA</th>
-                                        <th>EMAIL</th>
-                                        <th>HANDPHONE</th>
-                                        <th>INPUT DATE</th>
-                                    </tr>
-                                </tfoot>
+                                
                             </table>
                         </div>
                         <!-- /.box-body -->

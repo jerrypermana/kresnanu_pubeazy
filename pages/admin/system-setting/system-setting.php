@@ -160,7 +160,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                                 <div class="box-header with-border">
                                                     <h4 class="box-title">
                                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                                            Contact Us
+                                                        <i class="fa fa-phone"></i> Contact Us
                                                         </a>
                                                     </h4>
                                                 </div>
@@ -225,6 +225,51 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                                         </div>
                                                         <div class="box-footer">
                                                             <button type="submit" name="u_contact" class="btn btn-info">Update</button>
+                                                            <button type="cancel" class="btn btn-default  pull-right">Cancel</button>
+
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="panel box box-success">
+                                                <div class="box-header with-border">
+                                                    <h4 class="box-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                                        <i class="fa fa-th-large"></i> Social Media
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseFour" class="panel-collapse collapse in">
+                                                    <form role="form" action="" method="POST" name='simpan' onSubmit='return validasi()' enctype="multipart/form-data">
+                                                        <?php
+
+
+                                                        $q_sm           = "SELECT * FROM social_media";
+                                                        $hasil_sm       = mysqli_query($konek, $q_sm);
+                                                        $d_sm           = mysqli_fetch_array($hasil_sm);
+
+                                                        ?>
+                                                        <div class="box-body">
+                                                            <label class="col-sm-2 control-label"><i class="fa fa-facebook-official"></i> Facebook</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="facebook" class="form-control" value='<?php echo $d_sm['facebook']; ?>'>           
+                                                                <input type="hidden" name="socmed_id"  class="form-control" value='<?php echo $d_sm['socmed_id']; ?>'>
+                                                            </div>
+                                                        </div>
+                                                        <div class="box-body">
+                                                            <label class="col-sm-2 control-label"><i class="fa fa-twitter-square"></i> Twitter</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="twitter" class="form-control" value='<?php echo $d_sm['twitter']; ?>'>           
+                                                            </div>
+                                                        </div>
+                                                        <div class="box-body">
+                                                            <label class="col-sm-2 control-label"><i class="fa fa-instagram"></i> Instagram</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="ig" class="form-control" value='<?php echo $d_sm['instagram']; ?>'>           
+                                                            </div>
+                                                        </div>
+                                                        <div class="box-footer">
+                                                            <button type="submit" name="u_sosmed" class="btn btn-info">Update</button>
                                                             <button type="cancel" class="btn btn-default  pull-right">Cancel</button>
 
                                                         </div>
@@ -323,6 +368,29 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                 location.replace("' . $base_url . '/index.php?p=system-setting")</script>';
                                 } else {
                                     echo '<script>alert("System Settings Contact Us Failed Update")</script>';
+                                }
+                            }
+
+                            if (isset($_POST['u_sosmed'])) {
+                                $socmed_id          = $_POST['socmed_id'];
+                                $facebook           = $_POST['facebook'];
+                                $twitter            = $_POST['twitter'];
+                                $ig                 = $_POST['ig'];
+
+                                $q_socmed     = "UPDATE social_media set facebook='$facebook', 
+                                    twitter='$twitter',
+                                    instagram='$ig'
+                                    WHERE socmed_id='$socmed_id'";
+
+                                    ///echo $q_socmed;
+
+                                $upd_socmed     = mysqli_query($konek, $q_socmed);
+
+                                if ($upd_socmed) {
+                                    echo '<script>alert("System Settings Social Media is Update")
+                                location.replace("' . $base_url . '/index.php?p=system-setting")</script>';
+                                } else {
+                                    echo '<script>alert("System Settings Social Media Failed Update")</script>';
                                 }
                             }
 

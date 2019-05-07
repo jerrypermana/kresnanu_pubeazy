@@ -77,17 +77,17 @@ if (isset($_GET["p"])) {
     include 'admin/reporting/rep-presenter.php';
   } elseif ($id == "rep-fullpaper") {
     include 'admin/reporting/rep-fullpaper.php';
-  }elseif ($id == "rep-peserta") {
+  } elseif ($id == "rep-peserta") {
     include 'admin/reporting/rep-peserta.php';
-  }//MODUL REVIEWER//
+  } //MODUL REVIEWER//
   elseif ($id == "list-reviewer") {
     include 'admin/reviewer/list-reviewer.php';
   } elseif ($id == "add-reviewer") {
     include 'admin/reviewer/add-reviewer.php';
-  }elseif($id == "edit-reviewer") {
+  } elseif ($id == "edit-reviewer") {
     include 'admin/reviewer/edit-reviewer.php';
-  //ADMIN MASTER FILE//
-  }elseif ($id == "hapus") {
+    //ADMIN HAPUS MASTER FILE//
+  } elseif ($id == "hapus") {
     include 'admin/paper/hapus.php';
   }
   //ADMIN SYSTEM SETTING//
@@ -97,8 +97,14 @@ if (isset($_GET["p"])) {
     include 'admin/system-setting/set-add-speakers.php';
   } elseif ($id == "edit-speakers") {
     include 'admin/system-setting/set-edit-speakers.php';
-  }elseif ($id == "system-setting") {
+  } elseif ($id == "system-setting") {
     include 'admin/system-setting/system-setting.php';
+  } elseif ($id == "list-home-content") {
+    include 'admin/system-setting/list-home-content.php';
+  } elseif ($id == "add-home-content") {
+    include 'admin/system-setting/add-home-content.php';
+  }elseif ($id == "edit-home-content") {
+    include 'admin/system-setting/edit-home-content.php';
   }
   // START MODUL PRESENTER
   elseif ($id == "dashboard-presenter") {
@@ -117,7 +123,7 @@ if (isset($_GET["p"])) {
     include 'presenter/paper/pilih-jadwal.php';
   } elseif ($id == "add-jadwal") {
     include 'presenter/paper/add-jadwal.php';
-  }elseif ($id == "add-ppt") {
+  } elseif ($id == "add-ppt") {
     include 'presenter/paper/add-ppt.php';
   } elseif ($id == "edit-presenter") {
     include 'presenter/paper/edit-presenter.php';
@@ -146,11 +152,7 @@ if (isset($_GET["p"])) {
   } //START MODUL REVIEWER
   elseif ($id == "dashboard-reviewer") {
     include 'reviewer/dashboard-reviewer.php';
-  } 
-  
-  
-  
-  else {
+  } else {
     include 'index.php';
   }
 }

@@ -7,24 +7,24 @@ if (!isset($_SESSION['email'])) {
 }
 
 if ($_SESSION['group_session'] == 'peserta') {
-     $id_peserta   = $_SESSION['id_peserta'];
-     $query      = "SELECT * FROM peserta WHERE id_peserta='$id_peserta'";
-     $hasil = mysqli_query($konek, $query);
-     $row = mysqli_fetch_array($hasil);
-     $hitung = mysqli_num_rows($hasil);
+    $id_peserta   = $_SESSION['id_peserta'];
+    $query      = "SELECT * FROM peserta WHERE id_peserta='$id_peserta'";
+    $hasil = mysqli_query($konek, $query);
+    $row = mysqli_fetch_array($hasil);
+    $hitung = mysqli_num_rows($hasil);
 
-     if ($hitung == 0) {
-         echo '<script>alert("ID Anggota Tidak Di Temukan")
+    if ($hitung == 0) {
+        echo '<script>alert("ID Anggota Tidak Di Temukan")
               location.replace("' . $base_url . '/index.php?p=dashboard-peserta")</script>';
-     }
+    }
 
-     if ($row['image'] == ""){
-          $foto = '../files/peserta/no_photo.png';
-     } else {
-          $foto = '../files/peserta/'.$row['image'].'';
-     }
+    if ($row['image'] == "") {
+        $foto = '../files/peserta/no_photo.png';
+    } else {
+        $foto = '../files/peserta/' . $row['image'] . '';
+    }
 } else {
-     $foto = '../files/admin.png';
+    $foto = '../files/admin.png';
 }
 
 ?>
@@ -53,24 +53,25 @@ if ($_SESSION['group_session'] == 'peserta') {
     <!-- Select2 -->
     <link rel="stylesheet" href="../assets/bower_components/select2/dist/css/select2.min.css">
 
-    <!-- <link href="../assets/editor/editor.css" type="text/css" rel="stylesheet"/> -->
+
+    <link href="../assets/editor/editor.css" type="text/css" rel="stylesheet" />
+
+
     <link rel="stylesheet" href="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
     <!-- CSS DATATABLES JSON -->
     <link href="../assets/plugins/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
+
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
+    
     <!-- jQuery 3 -->
     <script src="../assets/bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Select2 -->
     <script src="../assets/bower_components/select2/dist/js/select2.full.min.js"></script>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -80,11 +81,14 @@ if ($_SESSION['group_session'] == 'peserta') {
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script src="../assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="../assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-
+    <script src="../assets/editor/editor.js"></script>
     <script src="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <!-- Data Tables Ajax JSON -->
     <script src="../assets/plugins/bootstrap-table/dist/bootstrap-table.min.js" type="text/javascript"></script>
-
+     <!-- include libraries(jQuery, bootstrap)SUMMERNOTE -->
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
+    <!-- include libraries(jQuery, bootstrap)SUMMERNOTE -->
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -182,10 +186,10 @@ if ($_SESSION['group_session'] == 'peserta') {
                                     </a>
                                 </li>
                                 <!-- <li>
-                                                    <a href="<?php echo $base_url; ?>/index.php?p=list-jadwal">
-                                                        <i class="fa fa-calendar-check-o"></i> <span>List Jadwal</span>
-                                                    </a>
-                                                </li> -->
+                                                                        <a href="<?php echo $base_url; ?>/index.php?p=list-jadwal">
+                                                                            <i class="fa fa-calendar-check-o"></i> <span>List Jadwal</span>
+                                                                        </a>
+                                                                    </li> -->
                             </ul>
                         </li>
                         <li class="treeview">
@@ -240,15 +244,11 @@ if ($_SESSION['group_session'] == 'peserta') {
                                     </a>
                                 </li>
                                 <!-- <li>
-                                                    <a href="#">
-                                                        <i class="fa fa-file-o"></i> <span>LOA (Letter of Accepted)</span>
-                                                    </a>
-                                                </li> -->
-                                <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=mst-admin">
-                                        <i class="fa fa-user"></i> <span>Administrator</span>
-                                    </a>
-                                </li>
+                                                                        <a href="#">
+                                                                            <i class="fa fa-file-o"></i> <span>LOA (Letter of Accepted)</span>
+                                                                        </a>
+                                                                    </li> -->
+
                             </ul>
                         </li>
                         <li class="treeview">
@@ -275,7 +275,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                            <li>
+                                <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=rep-fullpaper">
                                         <i class="fa fa-file-o"></i> <span>Full Paper</span>
                                     </a>
@@ -292,34 +292,31 @@ if ($_SESSION['group_session'] == 'peserta') {
                                 </li>
                             </ul>
                         </li>
-                        <!-- START SYSTEM SETTING -->
-                        <li class="header">Setting</li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-cogs"></i> <span>System Setting</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
+                        <!-- START WEBSITE -->
+                        <li class="header">WEBSITE</li>
+
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=set-keynote-speakers">
+                                <i class="fa fa-bullhorn"></i> <span>Keynote Speakers</span>
                             </a>
-                            <ul class="treeview-menu">
+                        </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=list-home-content">
+                                <i class="fa fa-file-text-o"></i> <span>Home Content</span>
+                            </a>
+                        </li>
+                        <!-- START SYSTEM SETTING -->
+                        <li class="header">SYSTEM SETTING</li>
 
-                                <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=set-keynote-speakers">
-                                        <i class="fa fa-bullhorn"></i> <span>Keynote Speakers</span>
-                                    </a>
-                                </li>
-                                <!-- <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=setting-loa">
-                                        <i class="fa fa-envelope"></i> <span>LOA</span>
-                                    </a>
-                                </li> -->
-                                <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=system-setting">
-                                        <i class="fa fa-cog"></i> <span>System Setting</span>
-                                    </a>
-                                </li>
-
-                            </ul>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=system-setting">
+                                <i class="fa fa-cog"></i> <span>System Setting</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=mst-admin">
+                                <i class="fa fa-user"></i> <span>Administrator</span>
+                            </a>
                         </li>
                         <!-- CLOSE SYSTEM SETTING -->
 
@@ -346,7 +343,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
-                       
+
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-user"></i> <span>Presenter</span>
@@ -376,7 +373,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                         <i class="fa fa-check-square"></i> <span>Verification Full Paper</span>
                                     </a>
                                 </li>
-                              
+
                             </ul>
                         </li>
                         <li class="treeview">

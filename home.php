@@ -16,6 +16,7 @@ $data_homepage = mysqli_fetch_array($homepage);
 $contact_us      = mysqli_query($konek, "SELECT * FROM contact_us LIMIT 1");
 $data_contact  = mysqli_fetch_array($contact_us);
 
+
 ?>
 <br>
 <section id="intro">
@@ -79,7 +80,7 @@ $data_contact  = mysqli_fetch_array($contact_us);
                         <div class="speaker" style="max-width: 100%; height: 100%; align: center;">
                             ' . $photo . '
                             <div class="details">
-                                <h3><a href="speaker-details.html">' . $row_speak['speaker_name'] . '</a></h3>
+                                <h3><a href="'.$base_url.'/url.php?p=speaker-detail&speakerID='.$row_speak['speaker_id'].'">' . $row_speak['speaker_name'] . '</a></h3>
                                 <p>' . $row_speak['institution'] . '</p>
 
                             </div>

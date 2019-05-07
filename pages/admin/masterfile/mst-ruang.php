@@ -85,16 +85,7 @@ if ($_SESSION['group_session'] == 'admin') {
                                     };
                                     ?>
 
-                                    <tfoot>
-                                        <tr>
-                                            <th>NAMA RUANG</th>
-                                            <th>KUOTA</th>
-                                            <th>INPUT DATE</th>
-                                            <th>LAST UPDATE</th>
-
-                                            <th>ACTION</th>
-                                        </tr>
-                                    </tfoot>
+                                   
                                 </table>
                             </div>
                             <!-- /.box-body -->

@@ -70,13 +70,7 @@ if ($_SESSION['group_session'] == 'admin') {
                                 };
                                 ?>
 
-                                <tfoot>
-                                    <tr>
-                                        <th>JAM</th>
-
-                                        <th>ACTION</th>
-                                    </tr>
-                                </tfoot>
+                                
                             </table>
                         </div>
                         <!-- /.box-body -->
