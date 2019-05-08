@@ -30,6 +30,8 @@ if (isset($_GET["p"])) {
         include 'login-admin.php';
     } elseif ($id == "speaker-detail") {
         include 'speaker-detail.php';
+    } elseif ($id == "content") {
+        include 'content.php';
     }else {
         include 'index.php';
     }

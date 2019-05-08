@@ -79,6 +79,12 @@ if (isset($_GET["p"])) {
     include 'admin/reporting/rep-fullpaper.php';
   } elseif ($id == "rep-peserta") {
     include 'admin/reporting/rep-peserta.php';
+  }  elseif ($id == "rep-abstrak") {
+    include 'admin/reporting/rep-abstrak.php';
+  }  elseif ($id == "rep-view-abstrak") {
+    include 'admin/reporting/rep-view-abstrak.php';
+  }  elseif ($id == "rep-poster") {
+    include 'admin/reporting/rep-poster.php';
   } //MODUL REVIEWER//
   elseif ($id == "list-reviewer") {
     include 'admin/reviewer/list-reviewer.php';

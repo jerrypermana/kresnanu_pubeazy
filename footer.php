@@ -6,14 +6,20 @@
          <div class="container">
              <div class="row">
 
+
                  <div class="col-lg-3 col-md-6 footer-links">
                      <h4>Useful Links</h4>
                      <ul>
-                         <li><i class="fa fa-angle-right"></i> <a href="#">Home</a></li>
-                         <li><i class="fa fa-angle-right"></i> <a href="#">About us</a></li>
-                         <li><i class="fa fa-angle-right"></i> <a href="#">Services</a></li>
-                         <li><i class="fa fa-angle-right"></i> <a href="#">Terms of service</a></li>
-                         <li><i class="fa fa-angle-right"></i> <a href="#">Privacy policy</a></li>
+                         <?php
+                            $content        = mysqli_query($konek, "SELECT * FROM home_content order by sequance ASC");
+                            while ($d_content      = mysqli_fetch_array($content)) {
+
+                                echo '<li><i class="fa fa-angle-right"></i> <a href="'.$base_url.'/url.php?p=content&contentID='.$d_content['content_id'].'">'.$d_content['page_title'].'</a></li>';
+
+                            }
+
+                            ?>                      
+                       
                      </ul>
                  </div>
 
@@ -46,7 +52,7 @@
                          <a href="<?php echo $data_socmed['twitter']; ?>" class="twitter"><i class="fa fa-twitter"></i></a>
                          <a href="<?php echo $data_socmed['facebook']; ?>" class="facebook"><i class="fa fa-facebook"></i></a>
                          <a href="<?php echo $data_socmed['instagram']; ?>" class="instagram"><i class="fa fa-instagram"></i></a>
-                       
+
                      </div>
 
                  </div>

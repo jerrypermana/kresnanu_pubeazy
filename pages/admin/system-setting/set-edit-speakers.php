@@ -93,7 +93,8 @@ if ($_SESSION['group_session'] == 'admin') {
                                 <label for="inputPassword3" class="col-sm-3 control-label">About Speakers</label>
 
                                 <div class="col-sm-9">
-                                    <textarea id="compose-textarea" class="form-control" name="about_speaker" style="height: 300px"><?php echo $row['about_speaker']; ?> </textarea>
+                                <textarea id="editor1" name="about_speaker" rows="10" cols="80"> <?php echo $row['about_speaker']; ?></textarea>
+
                                 </div>
                             </div>
 
@@ -192,11 +193,13 @@ if ($_SESSION['group_session'] == 'admin') {
         ?>
         <script>
             $(function() {
-                //Add text editor
-                $("#compose-textarea").wysihtml5();
-            });
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace('editor1')
+                //bootstrap WYSIHTML5 - text editor
+                $('.textarea').wysihtml5()
+            })
         </script>
-
     <?php
 }
 ?>

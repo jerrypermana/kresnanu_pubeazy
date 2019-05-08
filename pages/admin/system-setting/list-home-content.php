@@ -76,7 +76,7 @@ if ($_SESSION['group_session'] == 'admin') {
                                                 <td >$row_content[page_title]</td>
                                                 <td align='center'><a href='$base_url/index.php?p=edit-home-content&contentID=$row_content[content_id]'><button type='button' class='btn btn-default'><i class='fa fa-edit'></i> Edit</button></a>
                                                 &nbsp
-                                               <a href='$base_url/index.php?p=mst-hapus&speakID=$row_content[content_id]'onClick=\"return confirm('Apakah anda yakin akan menghapus data Speakers $row_content[page_title] ?')\"><button type='button' class='btn btn-danger'><i class='fa fa-trash'> Hapus</i></button></a>
+                                               <a href='$base_url/index.php?p=mst-hapus&contentID=$row_content[content_id]'onClick=\"return confirm('Apakah anda yakin akan menghapus data Speakers $row_content[page_title] ?')\"><button type='button' class='btn btn-danger'><i class='fa fa-trash'> Hapus</i></button></a>
                                                 </td>
                                             </tr>
                                         </tbody>";

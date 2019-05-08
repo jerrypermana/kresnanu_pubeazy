@@ -51,8 +51,9 @@ if ($_SESSION['group_session'] == 'admin') {
                                 <div class="col-sm-9">
                                     <!-- <textarea id="txtEditor" name='desc_text'></textarea> -->
                                     <!-- <textarea id='txtEditor' name="desc" class="form-control" style="height: 300px"></textarea> -->
-                                    <textarea id="summernote" name="summernote"></textarea>
-                                
+                                    <!-- <textarea id="summernote" name="summernote"></textarea> -->
+                                    <textarea id="editor1" name="description" rows="10" cols="80"> </textarea>
+
                                 </div>
                             </div>
 
@@ -86,7 +87,7 @@ if ($_SESSION['group_session'] == 'admin') {
         if (isset($_POST['submit'])) {
 
             $page_title         = $_POST['page_title'];
-            $description        = $_POST['summernote'];
+            $description        = $_POST['description'];
             $sequance           = $_POST['sequance'];
             $input_date         = date('Y-m-d');
 
@@ -94,7 +95,7 @@ if ($_SESSION['group_session'] == 'admin') {
             $query_content  = "INSERT INTO home_content (page_title, description, sequance, input_date)
                                         VALUES('$page_title','$description','$sequance', '$input_date')";
 
-           //echo $query_content;
+            //echo $query_content;
             //echo $description;
             $insert_content = mysqli_query($konek, $query_content);
 
@@ -107,24 +108,15 @@ if ($_SESSION['group_session'] == 'admin') {
 
         ?>
         <script>
-            // $(function() {
-            //     //Add text editor
-            //     $("#txtEditor").Editor();
-            // });
-
-
-            $('#summernote').summernote({
-                placeholder: 'Hello stand alone ui',
-                tabsize: 2,
-                height: 500
-            });
+            $(function() {
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace('editor1')
+                //bootstrap WYSIHTML5 - text editor
+                $('.textarea').wysihtml5()
+            })
         </script>
 
-        <!-- <script>
-                        $(document).ready(function() {
-                
-                        });
-                    </script> -->
 
     <?php
 }

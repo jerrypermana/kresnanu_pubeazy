@@ -63,9 +63,9 @@ if ($_SESSION['group_session'] == 'peserta') {
     <link href="../assets/plugins/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
 
-   
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
-    
+
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet"> -->
+
     <!-- jQuery 3 -->
     <script src="../assets/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -85,10 +85,8 @@ if ($_SESSION['group_session'] == 'peserta') {
     <script src="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <!-- Data Tables Ajax JSON -->
     <script src="../assets/plugins/bootstrap-table/dist/bootstrap-table.min.js" type="text/javascript"></script>
-     <!-- include libraries(jQuery, bootstrap)SUMMERNOTE -->
-     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
-    <!-- include libraries(jQuery, bootstrap)SUMMERNOTE -->
+   <!-- CK Editor -->
+    <script src="../assets/bower_components/ckeditor/ckeditor.js"></script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -186,12 +184,13 @@ if ($_SESSION['group_session'] == 'peserta') {
                                     </a>
                                 </li>
                                 <!-- <li>
-                                                                        <a href="<?php echo $base_url; ?>/index.php?p=list-jadwal">
-                                                                            <i class="fa fa-calendar-check-o"></i> <span>List Jadwal</span>
-                                                                        </a>
-                                                                    </li> -->
+                                                                            <a href="<?php echo $base_url; ?>/index.php?p=list-jadwal">
+                                                                                <i class="fa fa-calendar-check-o"></i> <span>List Jadwal</span>
+                                                                            </a>
+                                                                        </li> -->
                             </ul>
                         </li>
+                   
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-users"></i> <span>Participants</span>
@@ -243,11 +242,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                         <i class="fa fa-building-o"></i> <span>Room</span>
                                     </a>
                                 </li>
-                                <!-- <li>
-                                                                        <a href="#">
-                                                                            <i class="fa fa-file-o"></i> <span>LOA (Letter of Accepted)</span>
-                                                                        </a>
-                                                                    </li> -->
+
 
                             </ul>
                         </li>
@@ -276,8 +271,18 @@ if ($_SESSION['group_session'] == 'peserta') {
                             </a>
                             <ul class="treeview-menu">
                                 <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-abstrak">
+                                        <i class="fa fa-file-o"></i> <span>Abstrak</span>
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=rep-fullpaper">
                                         <i class="fa fa-file-o"></i> <span>Full Paper</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-poster">
+                                        <i class="fa fa-file-o"></i> <span>Poster</span>
                                     </a>
                                 </li>
                                 <li>

@@ -63,7 +63,7 @@ if ($_SESSION['group_session'] == 'admin') {
 
                                 <div class="col-sm-9">
 
-                                    <textarea id="summernote" name="summernote"><?php echo $row['description'] ?></textarea>
+                                <textarea id="editor1" name="description" rows="10" cols="80"><?php echo $row['description'] ?> </textarea>
                                 </div>
                             </div>
 
@@ -98,7 +98,7 @@ if ($_SESSION['group_session'] == 'admin') {
 
             $content_id         = $_POST['content_id'];
             $page_title         = $_POST['page_title'];
-            $description        = $_POST['summernote'];
+            $description        = $_POST['description'];
             $sequance           = $_POST['sequance'];
             
 
@@ -125,12 +125,15 @@ if ($_SESSION['group_session'] == 'admin') {
 
         ?>
         <script>
-            $('#summernote').summernote({
-
-                tabsize: 2,
-                height: 500
-            });
+            $(function() {
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace('editor1')
+                //bootstrap WYSIHTML5 - text editor
+                $('.textarea').wysihtml5()
+            })
         </script>
+
 
     <?php
 }

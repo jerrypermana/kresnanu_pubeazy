@@ -118,6 +118,23 @@ elseif (isset($_GET['speakID'])) {
   }
 }
 
+elseif (isset($_GET['contentID'])) {
+  $contentID = $_GET['contentID'];
+
+  $query = "delete from home_content where content_id='$contentID'";
+  $hapus_content       = mysqli_query($konek,$query);
+
+
+ 
+  if ($hapus_content) {
+      echo '<script>alert("Data Berhasil Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=list-home-content")</script>';
+  } else {
+      echo '<script>alert("Data Gagal Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=list-home-content)</script>';
+  }
+}
+
 elseif (isset($_GET['reviewer_id'])) {
   $reviewer_id = $_GET['reviewer_id'];
 

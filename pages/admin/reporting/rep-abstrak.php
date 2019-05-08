@@ -4,7 +4,7 @@ if ($_SESSION['group_session'] == 'admin') {
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-file-o"></i> Reporting Full Paper
+            <i class="fa fa-file-o"></i> Reporting Abstrak
         </h1>
 
     </section>
@@ -33,7 +33,7 @@ if ($_SESSION['group_session'] == 'admin') {
                     <!-- form start -->
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                            <h3 class="box-title"><i class="fa fa-file-o"></i> List Full Paper</h3>
+                            <h3 class="box-title"><i class="fa fa-file-o"></i> List Abstrak</h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -59,7 +59,7 @@ if ($_SESSION['group_session'] == 'admin') {
                     pagination: true,
                     search: true,
                     pageSize: 10,
-                    url: 'data_api/api-fullpaper.php',
+                    url: 'data_api/api-abstrak.php',
                     singleSelect: true,
                     columns: [{
                             field: 'realname',
@@ -81,7 +81,7 @@ if ($_SESSION['group_session'] == 'admin') {
                         },
                         
                         {
-                            field: 'v_akhir',
+                            field: 'v_paper',
                             title: 'Status',
                             halign: 'center',
                             align: 'center',
@@ -103,10 +103,21 @@ if ($_SESSION['group_session'] == 'admin') {
                                 }
                                 return status;
                             }
-                        },
+                        }, 
+                    {
+                        field: 'paper_id',
+                        title: 'View Abstrak',
+                        align: 'center',
+                        halign: 'center',
+                        width: '10%',
+                        formatter: function(value, row) {
+                            return "<a href='<?php echo $base_url; ?>/index.php?p=rep-view-abstrak&idpaper=" + value + "''><button type='button' class='btn btn-default'><i class='fa fa-eye'></i> View</button></a>";
+
+                        }
+                    },
                         {
-                        field: 'file_fullpaper',
-                        title: 'File',
+                        field: 'file_paper',
+                        title: 'File Abstrak',
                         align: 'center',
                         halign: 'center',
                         width: '10%',
