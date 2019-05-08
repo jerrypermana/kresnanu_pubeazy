@@ -348,7 +348,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                     $mail->SMTPAuth = true;
                                     $mail->Username = $data_email['SMTP_User']; //user email
                                     $mail->Password = $data_email['SMTP_Pass']; //password email
-                                    $mail->SetFrom("pubeazy.conf@gmail.com", "PubEazy Conference"); //set email pengirim
+                                    $mail->SetFrom("$data_email[SMTP_User]", "PubEazy Conference"); //set email pengirim
                                     $mail->Subject = "Pemberitahuan Verifikasi Paper"; //subyek email
                                     $mail->AddAddress($email, $realname);  //tujuan email
                                     $mail->MsgHTML("<table width='100%' border='0' cellspacing='0' cellpadding='0' style='min-width:100%'>
@@ -511,7 +511,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                     $mail->SMTPAuth = true;
                                     $mail->Username = $data_email['SMTP_User']; //user email
                                     $mail->Password = $data_email['SMTP_Pass']; //password email
-                                    $mail->SetFrom("pubeazy.conf@gmail.com", "PubEazy Conference"); //set email pengirim
+                                    $mail->SetFrom("$data_email[SMTP_User]", "PubEazy Conference"); //set email pengirim
                                     $mail->Subject = "Pemberitahuan Verifikasi Paper"; //subyek email
                                     $mail->AddAddress($email, $realname);  //tujuan email
                                     $mail->MsgHTML("<table width='100%' border='0' cellspacing='0' cellpadding='0' style='min-width:100%'>

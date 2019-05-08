@@ -305,6 +305,11 @@ if ($_SESSION['group_session'] == 'peserta') {
                                         <i class="fa fa-file-o"></i> <span>Poster</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-ppt">
+                                        <i class="fa fa-file-o"></i> <span>PPT</span>
+                                    </a>
+                                </li>
 
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=rep-presenter">

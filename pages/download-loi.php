@@ -1,5 +1,5 @@
 <?php
- // Define relative path from this script to mPDF
+// Define relative path from this script to mPDF
 $nama_dokumen = 'Formulir Booking Sunrisedive'; //Beri nama file PDF hasil.
 define('_MPDF_PATH', '../mpdf60/');
 include(_MPDF_PATH . "mpdf.php");
@@ -25,21 +25,21 @@ ob_start();
     <head>
         <style>
             p.header {
-                font-family: "verdana", Times, serif;
+                font-family: "Quicksand", sans-serif;
                 font-size: 24px;
                 /* font-weight:bold; */
                 text-align: center;
             }
 
             p.headerjudul {
-                font-family: Arial, Helvetica, sans-serif;
+                font-family: "Quicksand", sans-serif;
                 text-align: center;
                 font-size: 16px;
                 font-weight: bold;
             }
 
             p.isi {
-                font-family: Arial, Helvetica, sans-serif;
+                font-family: "Quicksand", sans-serif;
                 text-align: justify;
                 font-size: 14px;
 
@@ -55,7 +55,7 @@ ob_start();
     include '../config/koneksi.php';
     $paper_id = $_GET['id'];
     $query = "SELECT p.paper_id,p.judul, p.abstrak, p.v_paper,p.id_presenter,pre.realname,pre.member_id, p.file_paper,tp.biaya_conf,tp.transfer_id,tp.v_transfer, 
-    conf.nama_konferensi,conf.start_date,conf.penyelenggara, mr.nama_ruang,jj.jam FROM paper as p 
+    conf.nama_konferensi,conf.start_date,conf.end_date,conf.penyelenggara, mr.nama_ruang,jj.jam FROM paper as p 
     LEFT JOIN presenter as pre ON p.id_presenter=pre.id_presenter
     LEFT JOIN transaksi_presenter as tp ON p.paper_id=tp.paper_id
     LEFT JOIN conference as conf ON p.konferensi_id=conf.konferensi_id
@@ -67,11 +67,12 @@ ob_start();
     $row = mysqli_fetch_array($hasil);
     $hitung = mysqli_num_rows($hasil);
 
-    $tanggal_conf = date('d-m-Y', strtotime($row['tanggal']));
+    $tanggal_conf = date('d-m-Y', strtotime($row['start_date']));
+    $end_conf = date('d-m-Y', strtotime($row['end_date']));
 
 
     if ($hitung == 0) {
-      echo '<script>alert("ID Paper Tidak Di Temukan")
+        echo '<script>alert("ID Paper Tidak Di Temukan")
   location.replace("' . $base_url . '/index.php?p=dashboard-presenter")</script>';
     }
     ?>
@@ -105,16 +106,16 @@ ob_start();
             </td>
         </tr>
         <?php
-                //  $query_draf = "SELECT * from download where download_id='3'";
-                //  $hasil_draf = mysqli_query($konek, $query_draf);
-                //  $row_draf = mysqli_fetch_array($hasil_draf);
+        //  $query_draf = "SELECT * from download where download_id='3'";
+        //  $hasil_draf = mysqli_query($konek, $query_draf);
+        //  $row_draf = mysqli_fetch_array($hasil_draf);
 
         ?>
         <br>
         <tr>
-           
+
             <td style="text-align: justify;">
-            <!-- <p class='isi'><?php echo $row_draf['draf'];  ?></p> -->
+                <!-- <p class='isi'><?php echo $row_draf['draf'];  ?></p> -->
                 <p class='isi'>The review processes for 1st International Conference on Economics, Business, Accounting and
                     Management (ICEBAM) 2018 organized by Faculty of Economy and Business has been completed. The
                     conference reviewed by international experts.</p>
@@ -190,21 +191,10 @@ ob_start();
                 <p style="width: 1px;">: </p>
             </td>
             <td style="width: 74%;">
-                <p><?php echo $tanggal_conf;  ?></p>
+                <p><?php echo $tanggal_conf . ' s/d ' . $end_conf;  ?></p>
             </td>
         </tr>
 
-        <tr>
-            <td style="width: 25%;">
-                <p>Jam</p>
-            </td>
-            <td style="width: 1%;">
-                <p style="width: 1px;">: </p>
-            </td>
-            <td style="width: 74%;">
-                <p><?php echo $row['jam']  ?></p>
-            </td>
-        </tr>
         <tr>
             <td style="width: 25%;" colspan="3">
                 <br>
@@ -216,6 +206,10 @@ ob_start();
         <tr>
 
             <td style="text-align: justify;" colspan="3">
+                <p class='isi'>Note :</p>
+                <p class='isi'>Registration can only be confirmed when payment proof has been uploaded in <a href="https://goo.glforms/fDNToMtTZYDWy6p72">https://goo.glforms/fDNToMtTZYDWy6p72 </a>
+                </p>
+                <br>
                 <p class='isi'>All participants should prepare visa, air tickets, room reservation and other matters by themselves before
                     the conference.</p>
                 <br>
@@ -225,11 +219,24 @@ ob_start();
                 <p class='isi'> For the most updated information on the conference, please check the conference website at
                     icebam.umsida.ac.id</p>
                 <br>
+                <p class='isi'><b>Important dates:</b><br><br>
+                    <ul>
+                        <li> November 30th : Full Paper Submission deadline</li>
+                        <li> December 7th : Last notification of full paper acceptance</li>
+                        <li> December 14th : Registration Deadline</li>
+                        <li> December 18th : The Conference</li>
+                    </ul>
                 </p>
+                <br>
+                </p>
+                <p class='isi'> <b>Chat Group: </b><br><br>
+                <a href="https://chat.whatsapp.com/KgkPt2YeWfnGyrdis1Xmmj"> https://chat.whatsapp.com/KgkPt2YeWfnGyrdis1Xmmj</a>
+                </p>
+                <br>
     </table>
     <br>
 
-    <table  align="right">
+    <table align="right">
         <tr>
             <td>
                 Warm regards,
@@ -252,4 +259,4 @@ ob_start();
         $mpdf->WriteHTML(utf8_encode($html));
         $mpdf->Output($nama_dokumen . ".pdf", 'I');
         exit;
-        ?> 
+        ?>

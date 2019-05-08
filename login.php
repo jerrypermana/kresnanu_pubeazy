@@ -68,6 +68,9 @@ include "config/koneksi.php";
                     </div>
                     <!-- /.col -->
                 </div>
+                <div class="form-group has-feedback">
+                <a href="url.php?p=forget-password"><label>Forget Password ?</label></a>
+                </div>
             </form>
             <!-- TUTUP JS CEK AUTHETIKASI PASSWORD -->
             <script type='text/javascript'>

@@ -91,9 +91,11 @@ if (isset($_GET["p"])) {
     include 'admin/reporting/rep-loa.php';
   } elseif ($id == "rep-payment-presenter") {
     include 'admin/reporting/rep-payment-presenter.php';
-  }elseif ($id == "rep-payment-peserta") {
+  } elseif ($id == "rep-payment-peserta") {
     include 'admin/reporting/rep-payment-peserta.php';
-  }  //MODUL REVIEWER//
+  } elseif ($id == "rep-ppt") {
+    include 'admin/reporting/rep-ppt.php';
+  } //MODUL REVIEWER//
   elseif ($id == "list-reviewer") {
     include 'admin/reviewer/list-reviewer.php';
   } elseif ($id == "add-reviewer") {
