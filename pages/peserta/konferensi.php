@@ -44,6 +44,9 @@ if ($_SESSION['group_session'] == 'peserta') {
                     WHERE tp.id_peserta='$id_peserta' ORDER BY transfer_id DESC LIMIT 1");
                     $data_transaksi = mysqli_fetch_array($transaksi_peserta);
 
+                   
+
+
                     include "../phpmailer/classes/class.phpmailer.php";
                     $mail = new PHPMailer;
                     $mail->IsSMTP();
@@ -137,7 +140,7 @@ if ($_SESSION['group_session'] == 'peserta') {
 
                     <td style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:14px;line-height:20px' colspan='3'>
                         <p>Hi <span></span><span>$data_peserta[realname]</span><span></span>,</p>
-                        <p>Appointment confirmed Conference <span></span><span>$data_peserta[nama_konferensi]</span><span></span> on <span></span><span>" . date("l") . "," . date("F j") . ", " . date("Y") . " at " . date("h:i:sa") . "</span><span></span>. Please find the details below:</p>
+                        <p>Appointment confirmed Conference <span></span><span>$data_transaksi[nama_konferensi]</span><span></span> on <span></span><span>" . date("l") . "," . date("F j") . ", " . date("Y") . " at " . date("h:i:sa") . "</span><span></span>. Please find the details below:</p>
                     </td>
 
                 </tr>

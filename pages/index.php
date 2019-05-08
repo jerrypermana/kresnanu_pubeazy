@@ -79,13 +79,21 @@ if (isset($_GET["p"])) {
     include 'admin/reporting/rep-fullpaper.php';
   } elseif ($id == "rep-peserta") {
     include 'admin/reporting/rep-peserta.php';
-  }  elseif ($id == "rep-abstrak") {
+  } elseif ($id == "rep-abstrak") {
     include 'admin/reporting/rep-abstrak.php';
-  }  elseif ($id == "rep-view-abstrak") {
+  } elseif ($id == "rep-view-abstrak") {
     include 'admin/reporting/rep-view-abstrak.php';
-  }  elseif ($id == "rep-poster") {
+  } elseif ($id == "rep-poster") {
     include 'admin/reporting/rep-poster.php';
-  } //MODUL REVIEWER//
+  } elseif ($id == "rep-loi") {
+    include 'admin/reporting/rep-loi.php';
+  } elseif ($id == "rep-loa") {
+    include 'admin/reporting/rep-loa.php';
+  } elseif ($id == "rep-payment-presenter") {
+    include 'admin/reporting/rep-payment-presenter.php';
+  }elseif ($id == "rep-payment-peserta") {
+    include 'admin/reporting/rep-payment-peserta.php';
+  }  //MODUL REVIEWER//
   elseif ($id == "list-reviewer") {
     include 'admin/reviewer/list-reviewer.php';
   } elseif ($id == "add-reviewer") {
@@ -109,7 +117,7 @@ if (isset($_GET["p"])) {
     include 'admin/system-setting/list-home-content.php';
   } elseif ($id == "add-home-content") {
     include 'admin/system-setting/add-home-content.php';
-  }elseif ($id == "edit-home-content") {
+  } elseif ($id == "edit-home-content") {
     include 'admin/system-setting/edit-home-content.php';
   }
   // START MODUL PRESENTER

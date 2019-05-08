@@ -12,30 +12,26 @@ include_once "../../config/koneksi.php";
     $limit  = isset($_GET['limit']) ? $_GET['limit'] : 10;
     $offset = isset($_GET['offset']) ? $_GET['offset'] : 0;
     $search = (isset($_GET['search'])) ? $_GET['search'] : '';
-    $sort   = (isset($_GET['sort'])) ? $_GET['sort'] : 'p.paper_id';
+    $sort   = (isset($_GET['sort'])) ? $_GET['sort'] : 'tp.transfer_id';
     $order  = (isset($_GET['order'])) ? $_GET['order'] : 'DESC';
     
-   $SQL_BASE="SELECT p.paper_id,
-   p.judul,pre.id_presenter,
-   pre.member_id,
-   pre.realname,pre.instansi, 
-   p.v_paper,p.file_paper,
-   conf.nama_konferensi,
-   p.type_presentation 
-   FROM paper as p 
-   RIGHT JOIN presenter as pre ON p.id_presenter=pre.id_presenter
-   RIGHT JOIN conference as conf ON p.konferensi_id=p.konferensi_id";
-   $SQL_BASE.=' WHERE p.type_presentation=2 ';
+   $SQL_BASE="SELECT pe.realname,pe.member_id,
+   pe.instansi,conf.nama_konferensi,
+   ac.nama_bank AS to_bank,tp.jumlah_transfer,tp.v_transfer 
+   FROM transaksi_peserta as tp
+   LEFT JOIN conference as conf ON tp.konferensi_id=conf.konferensi_id
+   LEFT JOIN peserta as pe ON tp.id_peserta=pe.id_peserta
+   LEFT JOIN account_bank as ac ON tp.kode_bank=ac.kode_bank";
     
     
 //    $ret['rows'] = mysqli_fetch_array($result);
     
     if($search<>''){
 			//get where
-            
-            $SQL_BASE.=' AND p.judul like "%'.$search.'%" OR ';
-            $SQL_BASE.='pre.member_id like "%'.$search.'%" OR ';
-			$SQL_BASE.='pre.realname like "%'.$search.'%" ';
+            $SQL_BASE.=' WHERE tp.v_transfer=1 AND ';
+            $SQL_BASE.='conf.nama_konferensi like "%'.$search.'%" OR ';
+            $SQL_BASE.='pe.member_id like "%'.$search.'%" OR ';
+			$SQL_BASE.='pe.realname like "%'.$search.'%" ';
 			$result = mysqli_query($konek, $SQL_BASE);
 			$ret['total'] = mysqli_num_rows($result);
 					
@@ -43,7 +39,7 @@ include_once "../../config/koneksi.php";
 			$SQL=($sort) ? $SQL_BASE.' ORDER BY '.$sort.' '.$order : $SQL_BASE;
 			$SQL.=' LIMIT '.$offset.','.$limit;
             $query=mysqli_query($konek, $SQL);
-            ///echo $SQL;	
+            //echo $SQL;	
 			if($ret['total'] > 0){
                 while($result_data = mysqli_fetch_object($query)){
                     $ret['rows'][] = $result_data;
@@ -58,7 +54,7 @@ include_once "../../config/koneksi.php";
 			$SQL=($sort) ? $SQL_BASE.' ORDER BY '.$sort.' '.$order : $SQL_BASE;
 			$SQL.=' LIMIT '.$offset.','.$limit;
             $query=mysqli_query($konek, $SQL);
-            //echo $SQL;
+            // echo $SQL;
 			if($ret['total'] > 0){
                 while($result_data = mysqli_fetch_object($query)){
                     $ret['rows'][] = $result_data;

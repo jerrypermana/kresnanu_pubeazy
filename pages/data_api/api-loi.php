@@ -19,21 +19,20 @@ include_once "../../config/koneksi.php";
    p.judul,pre.id_presenter,
    pre.member_id,
    pre.realname,pre.instansi, 
-   p.v_paper,p.file_paper,
-   conf.nama_konferensi,
-   p.type_presentation 
+   p.v_paper,
+   loi.tanggal_verifikasi,
+   loi.status 
    FROM paper as p 
-   RIGHT JOIN presenter as pre ON p.id_presenter=pre.id_presenter
-   RIGHT JOIN conference as conf ON p.konferensi_id=p.konferensi_id";
-   $SQL_BASE.=' WHERE p.type_presentation=2 ';
+   LEFT JOIN presenter as pre ON p.id_presenter=pre.id_presenter
+   LEFT JOIN loi ON p.paper_id=loi.paper_id";
     
     
 //    $ret['rows'] = mysqli_fetch_array($result);
     
     if($search<>''){
 			//get where
-            
-            $SQL_BASE.=' AND p.judul like "%'.$search.'%" OR ';
+            $SQL_BASE.=' WHERE p.v_paper=1 AND loi.status=1 AND ';
+            $SQL_BASE.='p.judul like "%'.$search.'%" OR ';
             $SQL_BASE.='pre.member_id like "%'.$search.'%" OR ';
 			$SQL_BASE.='pre.realname like "%'.$search.'%" ';
 			$result = mysqli_query($konek, $SQL_BASE);
@@ -43,7 +42,7 @@ include_once "../../config/koneksi.php";
 			$SQL=($sort) ? $SQL_BASE.' ORDER BY '.$sort.' '.$order : $SQL_BASE;
 			$SQL.=' LIMIT '.$offset.','.$limit;
             $query=mysqli_query($konek, $SQL);
-            ///echo $SQL;	
+            //echo $SQL;	
 			if($ret['total'] > 0){
                 while($result_data = mysqli_fetch_object($query)){
                     $ret['rows'][] = $result_data;
@@ -58,7 +57,7 @@ include_once "../../config/koneksi.php";
 			$SQL=($sort) ? $SQL_BASE.' ORDER BY '.$sort.' '.$order : $SQL_BASE;
 			$SQL.=' LIMIT '.$offset.','.$limit;
             $query=mysqli_query($konek, $SQL);
-            //echo $SQL;
+             //echo $SQL;
 			if($ret['total'] > 0){
                 while($result_data = mysqli_fetch_object($query)){
                     $ret['rows'][] = $result_data;

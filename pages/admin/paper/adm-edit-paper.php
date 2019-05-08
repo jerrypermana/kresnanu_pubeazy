@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'reviewer' ) {
+if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'reviewer') {
     ?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -221,7 +221,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                                             <div class="box-body">
                                                                 <label class="col-sm-2 control-label"></label>
                                                                 <div class="col-sm-6">
-                                                                <button type="button" class="btn btn-primary" data-target="#ModalAddSub" data-toggle="modal">Tambah Subject</button>
+                                                                    <button type="button" class="btn btn-primary" data-target="#ModalAddSub" data-toggle="modal">Tambah Subject</button>
                                                                 </div>
                                                             </div>
 
@@ -334,16 +334,20 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                     $realname   = $row_user['realname'];
 
 
+                                    $mst_email     = mysqli_query($konek, "SELECT * FROM mst_email WHERE email_id =1 ");
+                                    $data_email    = mysqli_fetch_assoc($mst_email);
+
+
                                     include "../phpmailer/classes/class.phpmailer.php";
                                     $mail = new PHPMailer;
                                     $mail->IsSMTP();
                                     $mail->SMTPSecure = 'ssl';
-                                    $mail->Host = "smtp.gmail.com"; //host masing2 provider email
+                                    $mail->Host = $data_email['SMTP_Host']; //host masing2 provider email
                                     $mail->SMTPDebug = 2;
                                     $mail->Port = 465;
                                     $mail->SMTPAuth = true;
-                                    $mail->Username = "pubeazy.conf@gmail.com"; //user email
-                                    $mail->Password = "blackberry123456"; //password email 
+                                    $mail->Username = $data_email['SMTP_User']; //user email
+                                    $mail->Password = $data_email['SMTP_Pass']; //password email
                                     $mail->SetFrom("pubeazy.conf@gmail.com", "PubEazy Conference"); //set email pengirim
                                     $mail->Subject = "Pemberitahuan Verifikasi Paper"; //subyek email
                                     $mail->AddAddress($email, $realname);  //tujuan email
@@ -494,17 +498,19 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                     $email      = $row_user['email'];
                                     $realname   = $row_user['realname'];
 
+                                    $mst_email     = mysqli_query($konek, "SELECT * FROM mst_email WHERE email_id =1 ");
+                                    $data_email    = mysqli_fetch_assoc($mst_email);
 
                                     include "../phpmailer/classes/class.phpmailer.php";
                                     $mail = new PHPMailer;
                                     $mail->IsSMTP();
                                     $mail->SMTPSecure = 'ssl';
-                                    $mail->Host = "smtp.gmail.com"; //host masing2 provider email
+                                    $mail->Host = $data_email['SMTP_Host']; //host masing2 provider email
                                     $mail->SMTPDebug = 2;
                                     $mail->Port = 465;
                                     $mail->SMTPAuth = true;
-                                    $mail->Username = "pubeazy.conf@gmail.com"; //user email
-                                    $mail->Password = "blackberry123456"; //password email 
+                                    $mail->Username = $data_email['SMTP_User']; //user email
+                                    $mail->Password = $data_email['SMTP_Pass']; //password email
                                     $mail->SetFrom("pubeazy.conf@gmail.com", "PubEazy Conference"); //set email pengirim
                                     $mail->Subject = "Pemberitahuan Verifikasi Paper"; //subyek email
                                     $mail->AddAddress($email, $realname);  //tujuan email

@@ -85,7 +85,7 @@ if ($_SESSION['group_session'] == 'peserta') {
     <script src="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <!-- Data Tables Ajax JSON -->
     <script src="../assets/plugins/bootstrap-table/dist/bootstrap-table.min.js" type="text/javascript"></script>
-   <!-- CK Editor -->
+    <!-- CK Editor -->
     <script src="../assets/bower_components/ckeditor/ckeditor.js"></script>
 </head>
 
@@ -184,13 +184,13 @@ if ($_SESSION['group_session'] == 'peserta') {
                                     </a>
                                 </li>
                                 <!-- <li>
-                                                                            <a href="<?php echo $base_url; ?>/index.php?p=list-jadwal">
-                                                                                <i class="fa fa-calendar-check-o"></i> <span>List Jadwal</span>
-                                                                            </a>
-                                                                        </li> -->
+                                                                                    <a href="<?php echo $base_url; ?>/index.php?p=list-jadwal">
+                                                                                        <i class="fa fa-calendar-check-o"></i> <span>List Jadwal</span>
+                                                                                    </a>
+                                                                                </li> -->
                             </ul>
                         </li>
-                   
+
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-users"></i> <span>Participants</span>
@@ -271,6 +271,26 @@ if ($_SESSION['group_session'] == 'peserta') {
                             </a>
                             <ul class="treeview-menu">
                                 <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-payment-presenter">
+                                        <i class="fa fa-file-o"></i> <span>Payment Proofs Presenter</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-payment-peserta">
+                                        <i class="fa fa-file-o"></i> <span>Payment Proofs Participants</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-loi">
+                                        <i class="fa fa-file-o"></i> <span>Letter of Invitation (LOI)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=rep-loa">
+                                        <i class="fa fa-file-o"></i> <span>Letter of Accepted (LOA)</span>
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=rep-abstrak">
                                         <i class="fa fa-file-o"></i> <span>Abstrak</span>
                                     </a>
@@ -285,6 +305,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                         <i class="fa fa-file-o"></i> <span>Poster</span>
                                     </a>
                                 </li>
+
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=rep-presenter">
                                         <i class="fa fa-file-o"></i> <span>Presenter</span>
