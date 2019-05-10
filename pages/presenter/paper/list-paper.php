@@ -4,7 +4,7 @@ if ($_SESSION['group_session'] == 'presenter') {
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Daftar Paper
+            <i class="fa fa-file-o"></i> List Paper
         </h1>
 
     </section>
@@ -21,11 +21,11 @@ if ($_SESSION['group_session'] == 'presenter') {
                     <div class="col-xs-12">
                         <div class="box">
                             <div class="box-header">
-                                <h3 class="box-title">Daftar Paper</h3>
+                                <h3 class="box-title"><i class="fa fa-file-o"></i> List Paper</h3>
 
                                 <div class="box-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
-                                       
+
 
                                     </div>
                                 </div>
@@ -44,9 +44,10 @@ if ($_SESSION['group_session'] == 'presenter') {
                                     <?php
 
                                     $id_presenter =  $_SESSION['id_presenter'];
-                                    $select = mysqli_query($konek, "SELECT paper.paper_id, paper.judul, presenter.realname, paper.v_paper
+                                    $select = mysqli_query($konek, "SELECT paper.paper_id, paper.judul, presenter.realname, paper.v_paper,status.status
                                                                     FROM paper 
                                                                     LEFT JOIN presenter ON paper.id_presenter=presenter.id_presenter
+                                                                    LEFT JOIN status ON paper.v_paper=status.status_id
                                                                     WHERE  paper.id_presenter='$id_presenter' ");
 
 
@@ -60,16 +61,21 @@ if ($_SESSION['group_session'] == 'presenter') {
                                             $key = $row_keyword['keyword'];
                                         };
 
-                                        if ($row_paper['v_paper'] == 0) {
 
-                                            $status = '<span class="label label-warning">Pending</span>';
+                                        if ($row_paper["v_paper"]  == '1') {
+                                            $status_ver = "<span class='label label-success'>$row_paper[status]</span>";
+                                        } else if ($row_paper["v_paper"] == '2') {
+                                            $status_ver = "<span class='label label-warning'>$row_paper[status]</span>";
+                                        } else if ($row_paper["v_paper"]  == '3') {
+
+                                            $status_ver = "<span class='label label-danger'>$row_paper[status]</span>";
                                         } else {
 
-                                            $status = '<span class="label label-success">Approved</span>';
+                                            $status_ver = "<span class='label label-warning'>not yet approved</span>";
                                         }
 
 
-                                        
+
                                         echo "<tbody>
                                         <tr>
                                         <td><a href='$base_url/index.php?p=pre-edit-paper&id=$row_paper[paper_id]'><button type='button' class='btn btn-default'><i class='fa fa-edit'></i></button></a>
@@ -78,7 +84,7 @@ if ($_SESSION['group_session'] == 'presenter') {
                                             <td>$row_paper[realname] </td>
                                             <td>$row_paper[judul] </td>                                                
                                             <td>$key</td>
-                                            <td>$status</td>
+                                            <td>$status_ver</td>
                                         
                                         </tr>
                                     </tbody>";

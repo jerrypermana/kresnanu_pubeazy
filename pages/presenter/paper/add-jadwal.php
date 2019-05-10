@@ -11,7 +11,7 @@ if ($_SESSION['group_session'] == 'presenter') {
 
     $id_presenter = $_SESSION['id_presenter'];
     $query = "SELECT p.paper_id,p.judul, p.abstrak, p.v_paper,p.id_presenter,pre.realname, p.file_fullpaper,tp.biaya_conf,tp.transfer_id,tp.v_transfer, 
-    conf.konferensi_id,conf.nama_konferensi,conf.start_date,conf.end_date,conf.penyelenggara, mr.nama_ruang,pre.instansi,pre.member_id,
+    conf.konferensi_id,conf.nama_konferensi,conf.start_date,conf.end_date,conf.penyelenggara, mr.nama_ruang,pre.afiliasi,pre.member_id,
     status.status,loi.id_loi
     FROM paper as p 
     LEFT JOIN presenter as pre ON p.id_presenter=pre.id_presenter
@@ -71,7 +71,7 @@ if ($_SESSION['group_session'] == 'presenter') {
 
 
     if ($hitung == 0) {
-        echo '<script>alert("Username Tidak Di Temukan")
+        echo '<script>alert("Bukti Transfer Belum diVerifikasi Admin")
         location.replace("' . $base_url . '/index.php?p=pre-list-paper")</script>';
     }
 

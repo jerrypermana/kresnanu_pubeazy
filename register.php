@@ -288,7 +288,7 @@
                                     $nama             = ucwords($_POST['name']);
                                     $participant      = $_POST['participant'];
                                     $address          = $_POST['address'] == '' ? '-' : ucwords($_POST['address']);
-                                    $institution      = $_POST['institution'] == '' ? '-' : ucwords($_POST['institution']);
+                                    $afiliasi         = $_POST['institution'] == '' ? '-' : ucwords($_POST['institution']);
                                     $hp               = $_POST['hp'] == '' ? '-' : $_POST['hp'];
                                     $gender           = $_POST['gender'] == '' ? '-' : $_POST['gender'];
 
@@ -323,8 +323,8 @@
                                         $member_id = 'RJI-1-' . $groub;
                                         $join++;
 
-                                        $query  = "INSERT INTO presenter (member_id, realname, email, gender,address,instansi, no_hp,password, group_Session , input_date, last_update)
-                                        VALUES('$member_id', '$nama', '$email','$gender','$address','$institution ','$hp', '$password','$group_pre','$tglinput', '$tglubah')";
+                                        $query  = "INSERT INTO presenter (member_id, realname, email, gender,address,afiliasi, no_hp,password, group_Session , input_date, last_update)
+                                        VALUES('$member_id', '$nama', '$email','$gender','$address','$afiliasi ','$hp', '$password','$group_pre','$tglinput', '$tglubah')";
 
                                         $insert_register = mysqli_query($konek, $query);
                                         // echo $query;

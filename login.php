@@ -134,7 +134,7 @@ include "config/koneksi.php";
                         $_SESSION['realname'] = $tu['realname'];
                         $_SESSION['group_session'] = $tu['group_session'];
 
-                        if ($tu['afiliasi'] != NULL && $tu['afiliasi'] != '') {
+                        if ($tu['afiliasi'] != NULL && $tu['image'] != NULL) {
                             echo '<script>location.replace("pages/index.php?p=dashboard-presenter")</script>';
 
                         } else{

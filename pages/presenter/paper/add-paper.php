@@ -156,7 +156,7 @@ if ($_SESSION['group_session'] == 'presenter') {
                 $judul          = ucwords($_POST['judul']);
                 $abstrak        = $_POST['abstrak'] == '' ? '-' : $_POST['abstrak'];
                 $conf_id        = $_POST['conf_id'];
-                $v_paper        = '2';
+                $v_paper        = '0';
                 $loa            = '0';
                 $lol            = '0';
                 $type_pre       = $_POST['type_pre'];
