@@ -24,6 +24,7 @@ if ($_SESSION['group_session'] == 'peserta') {
           tp.v_transfer,
           mr.nama_ruang,
           conf.start_date,
+          conf.end_date,
           tp.transfer_id,
           tp.nama_transfer,
           tp.jumlah_transfer,
@@ -44,7 +45,8 @@ if ($_SESSION['group_session'] == 'peserta') {
     $row = mysqli_fetch_array($hasil);
     $hitung = mysqli_num_rows($hasil);
 
-    $tanggal_conf = date('d-m-Y', strtotime($row['tanggal']));
+    $tanggal_conf = date('d-m-Y', strtotime($row['start_date']));
+    $end_conf = date('d-m-Y', strtotime($row['end_date']));
     $tanggal_tf = date('d-m-Y', strtotime($row['tgl_transfer']));
 
     if ($row['v_transfer'] == '0') {
@@ -117,7 +119,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                         <tr>
                                             <th style="width: 20%; text-align: right;"><label>Tanggal Konferensi<label></th>
                                             <th style="width: 2%">:</th>
-                                            <th style="width: 78%"><label><?php echo $tanggal_conf; ?><label>
+                                            <th style="width: 78%"><label><?php echo $tanggal_conf.' s/d '. $end_conf; ?><label>
 
                                             </th>
                                         </tr>
@@ -213,9 +215,6 @@ if ($_SESSION['group_session'] == 'peserta') {
             </div>
         </div>
 
-
-        </div>
-        </div>
 
 <?php
 }

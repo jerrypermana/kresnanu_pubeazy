@@ -68,7 +68,9 @@ if ($_SESSION['group_session'] == 'presenter') {
         $status_tf = "<span class='label label-warning'>None</span>";
     }
 
-
+    $q_paper = "SELECT * FROM paper WHERE paper.v_paper='1' AND paper.id_presenter='$id_presenter'";
+    $d_paper = mysqli_query($konek, $q_paper);
+    $h_paper = mysqli_num_rows($d_paper);
 
     if ($hitung == 0) {
         echo '<script>alert("Bukti Transfer Belum diVerifikasi Admin")
@@ -88,7 +90,7 @@ if ($_SESSION['group_session'] == 'presenter') {
                     <div class="box-header with-border">
                         <h4 style="text-align: center;"><?php echo $row["judul"] ?></h4>
                         <h5 style="text-align: center;"><i>Author <?php echo $row["realname"] ?> </i> </h5>
-                        <h5 style="text-align: center;"><i><?php echo $row["instansi"] ?> </i> </h5>
+                        <h5 style="text-align: center;"><i><?php echo $row["afiliasi"] ?> </i> </h5>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -217,22 +219,22 @@ if ($_SESSION['group_session'] == 'presenter') {
                                                 <input type="hidden" name="conf_id" id='conf_id' class="form-control" value=' <?php echo $row['konferensi_id']; ?>'>
                                             </div>
                                         </div>
-                                        
 
-                                <div class="box-body">
-                                    <label class="col-sm-2 control-label">Time Schedule</label>
-                                    <div class="col-sm-5">
-                                        <select class="form-control conf" name='jam' id="jam">
-                                            <option value=''>---- Select Your Time Conference ----</option>
 
-                                        </select>
-                                    </div>
-                                </div>
+                                        <div class="box-body">
+                                            <label class="col-sm-2 control-label">Time Schedule</label>
+                                            <div class="col-sm-5">
+                                                <select class="form-control conf" name='jam' id="jam">
+                                                    <option value=''>---- Select Your Time Conference ----</option>
 
-                                <input type="hidden" name="paper_id" id='paper_id' class="form-control" value=' <?php echo $row['paper_id']; ?>'>
-                                <input type="hidden" name="id_loi" id='id_loi' class="form-control" value=' <?php echo $row['id_loi']; ?>'>
+                                                </select>
+                                            </div>
+                                        </div>
 
-                                <?php
+                                        <input type="hidden" name="paper_id" id='paper_id' class="form-control" value=' <?php echo $row['paper_id']; ?>'>
+                                        <input type="hidden" name="id_loi" id='id_loi' class="form-control" value=' <?php echo $row['id_loi']; ?>'>
+
+                                        <?php
                                         $query_jadwal = "SELECT pj.date,pj.jam_id,p.paper_id,jj.jam
                                         FROM paper as p 
                                         LEFT JOIN presenter as pre ON p.id_presenter=pre.id_presenter
@@ -247,185 +249,185 @@ if ($_SESSION['group_session'] == 'presenter') {
                                             echo '
                                             <div class="box-body">
                                             <label class="col-sm-2 control-label">Date Schedule</label>                                          
-                                            <label class="col-sm-2 control-label">: '.$row_jadwal['date'].'<label>
+                                            <label class="col-sm-2 control-label">: ' . $row_jadwal['date'] . '<label>
                                              </div>
                                              <div class="box-body">
                                             <label class="col-sm-2 control-label">Time Schedule</label>                                          
-                                            <label class="col-sm-2 control-label">: '.$row_jadwal['jam'].'<label>
+                                            <label class="col-sm-2 control-label">: ' . $row_jadwal['jam'] . '<label>
                                              </div>';
-                                        } 
+                                        }
                                         ?>
 
-                                <input type='hidden' name='paper_id' value='<?php echo $row['paper_id']; ?>'>
-                                <div class="box-footer">
-                                    <button type="cancel" class="btn btn-default">Cancel</button>
-                                    <button type="submit" name="submit" class="btn btn-info pull-right">Submit</button>
+                                        <input type='hidden' name='paper_id' value='<?php echo $row['paper_id']; ?>'>
+                                        <div class="box-footer">
+                                            <button type="cancel" class="btn btn-default">Cancel</button>
+                                            <button type="submit" name="submit" class="btn btn-info pull-right">Submit</button>
+                                        </div>
+
+                                    </form>
                                 </div>
-
-                                </form>
                             </div>
-                        </div>
-                        <?php
+                            <?php
 
-                        if (isset($_POST['submit'])) {
-                            
-                            $date       = $_POST['date'];
-                            $jam        = $_POST['jam'];
-                            $select_jadwal = "SELECT * FROM paper_jadwal where date='$date' AND jam_id='$jam'";
-                            $jadwal         = mysqli_query($konek, $select_jadwal);
-                            $r_jadwal       = mysqli_fetch_array($jadwal);
-                            $h_jadwal       = mysqli_num_rows($jadwal);
+                            if (isset($_POST['submit'])) {
 
-                            if($h_jadwal != '1'){
-                            $paper_id   = $_POST['paper_id'];
-                            $jam        = $_POST['jam'];
-                            $date       = $_POST['date'];
-                            $id_loi     = $_POST['id_loi'];
-                            $status_loi  = '1';
-                            $nowdate    = date('Y-m-d');
+                                $date       = $_POST['date'];
+                                $jam        = $_POST['jam'];
+                                $select_jadwal = "SELECT * FROM paper_jadwal where date='$date' AND jam_id='$jam'";
+                                $jadwal         = mysqli_query($konek, $select_jadwal);
+                                $r_jadwal       = mysqli_fetch_array($jadwal);
+                                $h_jadwal       = mysqli_num_rows($jadwal);
 
-                            $query_jadwal = "INSERT INTO paper_jadwal (paper_id,date,jam_id)
+                                if ($h_jadwal != '1') {
+                                    $paper_id   = $_POST['paper_id'];
+                                    $jam        = $_POST['jam'];
+                                    $date       = $_POST['date'];
+                                    $id_loi     = $_POST['id_loi'];
+                                    $status_loi  = '1';
+                                    $nowdate    = date('Y-m-d');
+
+                                    $query_jadwal = "INSERT INTO paper_jadwal (paper_id,date,jam_id)
                                 VALUES('$paper_id','$date','$jam')";
 
-                            $query_update_loi = "UPDATE loi set status='$status_loi',tanggal_verifikasi='$nowdate' where id_loi='$id_loi'";
+                                    $query_update_loi = "UPDATE loi set status='$status_loi',tanggal_verifikasi='$nowdate' where id_loi='$id_loi'";
 
-                            $insert_jadwal  = mysqli_query($konek, $query_jadwal);
-                            $update_loi     = mysqli_query($konek, $query_update_loi);
+                                    $insert_jadwal  = mysqli_query($konek, $query_jadwal);
+                                    $update_loi     = mysqli_query($konek, $query_update_loi);
 
-                            if ($insert_jadwal) {
-                                echo '<script>alert("Add Schedule Success")</script>';
-                            } else {
-                                echo '<script>alert("Add Schedule Failed!")</script>';
+                                    if ($insert_jadwal) {
+                                        echo '<script>alert("Add Schedule Success")</script>';
+                                    } else {
+                                        echo '<script>alert("Add Schedule Failed!")</script>';
+                                    }
+                                } else {
+
+                                    echo '<script>alert("the schedule has been used")</script>';
+                                }
                             }
-                            }else{
+                            ?>
 
-                                echo '<script>alert("the schedule has been used")</script>';
-                        }
-                        }
-                        ?>
+                            <div class="panel box box-success">
+                                <div class="box-header with-border">
+                                    <h4 class="box-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                            Upload Full Paper
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse in">
+                                    <form role="form" action="" method="POST" name='simpan' onSubmit='return validasi()' enctype="multipart/form-data">
 
-                        <div class="panel box box-success">
-                            <div class="box-header with-border">
-                                <h4 class="box-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                        Upload Full Paper
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseThree" class="panel-collapse collapse in">
-                                <form role="form" action="" method="POST" name='simpan' onSubmit='return validasi()' enctype="multipart/form-data">
+                                        <input type="hidden" name="paper_id" id='paper_id' class="form-control" value=' <?php echo $row['paper_id']; ?>'>
+                                        <input type="hidden" name="member_id" id='member_id' class="form-control" value=' <?php echo $row['member_id']; ?>'>
 
-                                    <input type="hidden" name="paper_id" id='paper_id' class="form-control" value=' <?php echo $row['paper_id']; ?>'>
-                                    <input type="hidden" name="member_id" id='member_id' class="form-control" value=' <?php echo $row['member_id']; ?>'>
-
-                                    <div class="box-body">
-                                        <label class="col-sm-2 control-label">Upload Full Paper</label>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="exampleInputFile">Masukkan File Full Paper</label>
-                                                &nbsp &nbsp <input type="file" name='file' id='file' id="exampleInputFile" value='<?php echo $row['file_fullpaper']; ?>'>
-                                                <p class="help-block"> Allowed file extension : .doc, .docx or .pdf.</p>
-                                                <p class="help-block"> Maximum 4 Mb.</p>
-                                                <!-- <label>Allowed file extension : .doc, .docx or .pdf</label> -->
+                                        <div class="box-body">
+                                            <label class="col-sm-2 control-label">Upload Full Paper</label>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="exampleInputFile">Masukkan File Full Paper</label>
+                                                    &nbsp &nbsp <input type="file" name='file' id='file' id="exampleInputFile" value='<?php echo $row['file_fullpaper']; ?>'>
+                                                    <p class="help-block"> Allowed file extension : .doc, .docx or .pdf.</p>
+                                                    <p class="help-block"> Maximum 4 Mb.</p>
+                                                    <!-- <label>Allowed file extension : .doc, .docx or .pdf</label> -->
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <input type='hidden' name='paper_id' value='<?php echo $row['paper_id']; ?>'>
-                                    <div class="box-footer">
-                                        <button type="cancel" class="btn btn-default">Cancel</button>
-                                        <button type="submit" name="update" class="btn btn-info pull-right">Submit</button>
-                                    </div>
+                                        <input type='hidden' name='paper_id' value='<?php echo $row['paper_id']; ?>'>
+                                        <div class="box-footer">
+                                            <button type="cancel" class="btn btn-default">Cancel</button>
+                                            <button type="submit" name="update" class="btn btn-info pull-right">Submit</button>
+                                        </div>
 
-                                </form>
+                                    </form>
+                                </div>
                             </div>
+
+
                         </div>
 
-
                     </div>
-
                 </div>
-            </div>
-            <!-- general form elements -->
-            <script>
-                $(function() {
-                    $("#date").change(function() {
-                        var getValue = $(this).val();
-                        if (getValue == 0) {
-                            $("#jam").html("<option>-- Select Your Time Conference --</option>");
-                        } else {
-                            $.getJSON('data_api/ajax_changeTime.php', {
-                                'start_date': getValue
-                            }, function(data) {
-                                var showData;
-                                $.each(data, function(index, value) {
-                                    showData += "<option value='" + value.jam_id + "'>" + value.jam + "</option>";
+                <!-- general form elements -->
+                <script>
+                    $(function() {
+                        $("#date").change(function() {
+                            var getValue = $(this).val();
+                            if (getValue == 0) {
+                                $("#jam").html("<option>-- Select Your Time Conference --</option>");
+                            } else {
+                                $.getJSON('data_api/ajax_changeTime.php', {
+                                    'start_date': getValue
+                                }, function(data) {
+                                    var showData;
+                                    $.each(data, function(index, value) {
+                                        showData += "<option value='" + value.jam_id + "'>" + value.jam + "</option>";
+                                    })
+                                    $("#jam").html(showData)
                                 })
-                                $("#jam").html(showData)
-                            })
-                        }
+                            }
+                        })
+
                     })
+                </script>
 
-                })
-            </script>
+                <!-- /.box-header -->
+                <?php
+                if (isset($_POST['update'])) {
 
-            <!-- /.box-header -->
-            <?php
-            if (isset($_POST['update'])) {
+                    $paper_id   = $_POST['paper_id'];
+                    $member_id   = $_POST['member_id'];
+                    $tgl         = date('Y-m-d');
 
-                $paper_id   = $_POST['paper_id'];
-                $member_id   = $_POST['member_id'];
-                $tgl         = date('Y-m-d');
+                    $ekstensi_diperbolehkan    = array('pdf', 'doc', 'docx');
+                    //$nama = 'FullPaper_' . $tgl . '_' . $member_id . '.pdf';
+                    $nama = $_FILES['file']['name'];
+                    $x = explode('.', $nama);
+                    $ekstensi = strtolower(end($x));
+                    $nama_file = 'FullPaper_' . $tgl . '_' . $member_id . '.' . $ekstensi . '';
 
-                $ekstensi_diperbolehkan    = array('pdf', 'doc', 'docx');
-                //$nama = 'FullPaper_' . $tgl . '_' . $member_id . '.pdf';
-                $nama = $_FILES['file']['name'];
-                $x = explode('.', $nama);
-                $ekstensi = strtolower(end($x));
-                $nama_file = 'FullPaper_' . $tgl . '_' . $member_id . '.' . $ekstensi . '';
+                    $ukuran    = $_FILES['file']['size'];
+                    $file_tmp = $_FILES['file']['tmp_name'];
 
-                $ukuran    = $_FILES['file']['size'];
-                $file_tmp = $_FILES['file']['tmp_name'];
+                    if ($file_tmp != '') {
+                        $fullpaper  = '1';
+                    } else {
+                        $fullpaper  = '0';
+                    }
 
-                if ($file_tmp != '') {
-                    $fullpaper  = '1';
-                } else {
-                    $fullpaper  = '0';
-                }
+                    if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+                        if ($ukuran < 4485760) {
+                            move_uploaded_file($file_tmp, '../repository/' . $nama_file);
 
-                if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
-                    if ($ukuran < 4485760) {
-                        move_uploaded_file($file_tmp, '../repository/' . $nama_file);
-
-                        $query_update  = "UPDATE paper set 
+                            $query_update  = "UPDATE paper set 
                                         file_fullpaper='$nama_file',full_paper='$fullpaper',last_update='$tgl'
                                         where paper_id='$paper_id'";
 
 
 
 
-                        $update_paper = mysqli_query($konek, $query_update);
+                            $update_paper = mysqli_query($konek, $query_update);
 
-                        // echo $query_update;
-                        // echo $nama_file;
+                            // echo $query_update;
+                            // echo $nama_file;
 
-                        if ($update_paper) {
-                            echo '<script>alert("Paper Berhasil di Edit")</script>';
+                            if ($update_paper) {
+                                echo '<script>alert("Paper Berhasil di Edit")</script>';
+                            } else {
+                                echo '<script>alert("Paper Gagal di Edit")</script>';
+                            }
                         } else {
-                            echo '<script>alert("Paper Gagal di Edit")</script>';
+                            echo '<script>alert("Ukuran File Terlalu Besar")</script>';
                         }
                     } else {
-                        echo '<script>alert("Ukuran File Terlalu Besar")</script>';
+                        echo '<script>alert("Ekstensi Yang Di Upload Tidak Diperbolehkan")</script>';
                     }
-                } else {
-                    echo '<script>alert("Ekstensi Yang Di Upload Tidak Diperbolehkan")</script>';
                 }
-            }
 
-            ?>
-            <!-- /.AKHIR -->
+                ?>
+                <!-- /.AKHIR -->
 
-        </div>
+            </div>
         </div>
 
         </div>

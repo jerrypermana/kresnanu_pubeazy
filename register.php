@@ -1,5 +1,5 @@
-</br>
-</br>
+<br>
+<br>
 <main id="main">
 
     <!--==========================
@@ -366,6 +366,50 @@
                                         $insert_registrasi    = mysqli_query($konek, $query);
 
                                         if ($insert_registrasi) {
+
+                                            // $email      = $_POST['email'];;
+                                            // $realname   = $data_peserta['realname'];
+                                            $query = mysqli_query($konek, "SELECT * FROM conference WHERE show_dashboard='1' ");
+                                            $row = mysqli_fetch_array($query);
+
+                                            $mst_email     = mysqli_query($konek, "SELECT * FROM mst_email WHERE email_id =1 ");
+                                            $data_email    = mysqli_fetch_assoc($mst_email);
+
+                                            include "phpmailer/classes/class.phpmailer.php";
+                                            $mail = new PHPMailer;
+                                            $mail->IsSMTP();
+                                            $mail->SMTPSecure = 'ssl';
+                                            $mail->Host = $data_email['SMTP_Host']; //host masing2 provider email
+                                            $mail->SMTPDebug = 2;
+                                            $mail->Port = 465;
+                                            $mail->SMTPAuth = true;
+                                            $mail->Username = $data_email['SMTP_User']; //user email
+                                            $mail->Password = $data_email['SMTP_Pass']; //password email
+                                            $mail->SetFrom("$data_email[SMTP_User]", "PubEazy Conference"); //set email pengirim
+                                            $mail->Subject = "Confirmation of Seminar Registration"; //subyek email
+                                            $mail->AddAddress($email, $nama);  //tujuan email
+                                            $mail->MsgHTML('<center><table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:60%">
+                                            <tbody>
+                                                <tr><td style="padding:5px">
+                                                <span>
+                                                Dear,' . $nama . '</span></td></tr>
+                                                <tr><td><br></td></tr>
+                                                <tr>
+                                                <td style="padding:5px"><span style="line-height:25px">
+                                                You have successfully registered to '. $row['nama_konferensi'] .'. Next please click the link below to Login the participant status</span></td></tr>
+                                                <tr><td><br></td></tr>
+                                                <tr><td>
+                                                <a href="'.$base_url.'/url.php?p=login">Login To Website Conference</a></td>
+                                                </tr>                                                
+                                                <tr><td><br></td></tr>
+                                                <tr><td>Best Regards,</span></td></tr>
+                                                <tr><td><br></td></tr>
+                                                <tr><td>PubEazy Organizing Committee</span></td></tr>
+                                            </tbody>
+                                        </table></center>');
+                                            $mail->Send();
+
+
                                             echo '<script>alert("Registrasi Berhasil")
                                                         	location.replace("' . $base_url . '/url.php?p=login")</script>';
                                         } else {
@@ -374,7 +418,6 @@
                                                             location.replace("' . $base_url . '/url.php?p=register")</script>';
                                         }
                                     }
-
                                 }
                             }
 

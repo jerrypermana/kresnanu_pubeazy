@@ -28,7 +28,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                 $paper_id = $_GET['idpaper'];
                                 $query = "SELECT pj.jadwal_id,p.paper_id,p.judul, p.abstrak, p.v_paper,p.id_presenter,pre.realname, p.file_paper,
                                 p.file_fullpaper,p.full_paper,tp.biaya_conf,tp.transfer_id,tp.v_transfer,conf.nama_konferensi,conf.start_date,
-                                conf.penyelenggara, mr.nama_ruang,jj.jam,pre.member_id,pre.instansi ,pj.date,jj.jam,tp.file_bukti
+                                conf.penyelenggara, mr.nama_ruang,jj.jam,pre.member_id,pre.afiliasi ,pj.date,jj.jam,tp.file_bukti
                                 FROM paper as p 
                                 LEFT JOIN presenter as pre ON p.id_presenter=pre.id_presenter
                                 LEFT JOIN transaksi_presenter as tp ON p.paper_id=tp.paper_id
@@ -90,7 +90,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                     <div class="box-header with-border">
                                         <h4 style="text-align: center;"><?php echo $row["judul"] ?></h4>
                                         <h5 style="text-align: center;"><i>Author <?php echo $row["realname"] ?> </i> </h5>
-                                        <h5 style="text-align: center;"><i><?php echo $row["instansi"] ?> </i> </h5>
+                                        <h5 style="text-align: center;"><i><?php echo $row["afiliasi"] ?> </i> </h5>
                                     </div>
                                     <!-- /.box-header -->
                                     <div class="box-body">
@@ -233,7 +233,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                                             <div class="col-sm-6">
                                                                 <select class="form-control" name='full_paper'>
                                                                     <?php
-                                                                    if($row_pj['full_paper'] == '1'){
+                                                                    if($row_pj['v_akhir'] == '1'){
                                                                        echo"<option value='$row_pj[full_paper]'>Valid</option>";
                                                                     }else{
                                                                         echo"<option value='$row_pj[full_paper]'>In Valid</option>";

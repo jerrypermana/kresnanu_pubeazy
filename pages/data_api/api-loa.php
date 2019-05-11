@@ -18,7 +18,7 @@ include_once "../../config/koneksi.php";
    $SQL_BASE="SELECT p.paper_id,
    p.judul,pre.id_presenter,
    pre.member_id,
-   pre.realname,pre.instansi, 
+   pre.realname,pre.afiliasi, 
    p.v_paper,
    loa.tanggal_verifikasi,
    loa.status 

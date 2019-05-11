@@ -68,7 +68,7 @@ if ($_SESSION['group_session'] == 'admin') {
                             halign: 'center',
                             width: '20%',
                             formatter: function(value, row) {
-                                return "<b> " + row.realname + " <br> " + row.member_id + " <br> " + row.instansi + " </b>";
+                                return "<b> " + row.realname + " <br> " + row.member_id + " <br> " + row.afiliasi + " </b>";
 
                             }
                         },

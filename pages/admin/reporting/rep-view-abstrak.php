@@ -23,7 +23,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
 
                                 $paper_id = $_GET['idpaper'];
                                 $query = "SELECT paper.judul,paper.input_date,paper.v_paper,paper.abstrak,paper.file_paper,paper.paper_id,pre.realname,
-                                pre.instansi,pre.member_id,conf.nama_konferensi,conf.konferensi_id,conf.penyelenggara ,status.status,tp.biaya_conf,paper.komentar
+                                pre.afiliasi,pre.member_id,conf.nama_konferensi,conf.konferensi_id,conf.penyelenggara ,status.status,tp.biaya_conf,paper.komentar
                                 FROM paper 
                                 LEFT JOIN transaksi_presenter as tp ON paper.paper_id=tp.paper_id
                                 LEFT JOIN conference as conf ON paper.konferensi_id=conf.konferensi_id
@@ -84,7 +84,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                     <div class="box-header with-border">
                                         <h4 style="text-align: center;"><?php echo $row["judul"] ?></h4>
                                         <h5 style="text-align: center;"><i>Author <?php echo $row["realname"] ?> </i> </h5>
-                                        <h5 style="text-align: center;"><i><?php echo $row["instansi"] ?> </i> </h5>
+                                        <h5 style="text-align: center;"><i><?php echo $row["afiliasi"] ?> </i> </h5>
                                     </div>
                                     <!-- /.box-header -->
                                     <div class="box-body">

@@ -107,20 +107,7 @@ if ($_SESSION['group_session'] == 'presenter') {
 
             </div>
         </div>
-        </div>
-        <!-- /.box -->
-
-
-        <!-- /.box -->
-
-        <!-- Input addon -->
-
-
-        </div>
-        </div>
-
-        </div>
-        </div>
+     
     <?php
 }
 ?>

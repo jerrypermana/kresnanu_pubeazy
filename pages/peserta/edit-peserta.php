@@ -4,7 +4,7 @@ if ($_SESSION['group_session'] == 'peserta') {
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Ubah Profil Pengguna
+        Update Your Profile
         </h1>
 
     </section>
@@ -39,13 +39,13 @@ if ($_SESSION['group_session'] == 'peserta') {
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_0" data-toggle="tab">
-                                <h4 class="box-title">Profil Pengguna</h4>
+                                <h4 class="box-title">Profile Participant</h4>
                             </a></li>
                         <li><a href="#tab_1" data-toggle="tab">
-                                   <h4 class="box-title">Ubah Profil Pengguna</h4>
+                                   <h4 class="box-title">Update Your Profile</h4>
                                </a></li>
                         <li><a href="#tab_2" data-toggle="tab">
-                                <h4 class="box-title">Ubah Password Pengguna</h4>
+                                <h4 class="box-title">Update Your Password</h4>
                             </a></li>
 
                     </ul>
@@ -259,11 +259,11 @@ if ($_SESSION['group_session'] == 'peserta') {
                         //echo $query_pas;
                         if ($update_pass) {
                             echo '<script>alert("Password Pengguna Berhasil di Ubah")
-                 location.replace("' . $base_url . '/index.php?p=edit-presenter")</script>';
+                 location.replace("' . $base_url . '/index.php?p=edit-peserta")</script>';
                         } else {
 
                             echo '<script>alert("Password Pengguna Pengguna Gagal di Ubah")
-                 location.replace("' . $base_url . '/index.php?p=edit-presenter")</script>';
+                 location.replace("' . $base_url . '/index.php?p=edit-peserta")</script>';
                         }
                     }
 
@@ -277,8 +277,6 @@ if ($_SESSION['group_session'] == 'peserta') {
             </div>
         </div>
 
-        </div>
-        </div>
     <?php
 }
 ?>

@@ -88,6 +88,12 @@ if ($_SESSION['group_session'] == 'peserta') {
     <!-- CK Editor -->
     <script src="../assets/bower_components/ckeditor/ckeditor.js"></script>
 </head>
+<style>
+    a.disabled {
+        pointer-events: none;
+        cursor: default;
+    }
+</style>
 
 <body class="hold-transition skin-blue sidebar-mini">
     <!-- Site wrapper -->
@@ -184,10 +190,10 @@ if ($_SESSION['group_session'] == 'peserta') {
                                     </a>
                                 </li>
                                 <!-- <li>
-                                                                                    <a href="<?php echo $base_url; ?>/index.php?p=list-jadwal">
-                                                                                        <i class="fa fa-calendar-check-o"></i> <span>List Jadwal</span>
-                                                                                    </a>
-                                                                                </li> -->
+                                                                                                <a href="<?php echo $base_url; ?>/index.php?p=list-jadwal">
+                                                                                                    <i class="fa fa-calendar-check-o"></i> <span>List Jadwal</span>
+                                                                                                </a>
+                                                                                            </li> -->
                             </ul>
                         </li>
 
@@ -435,8 +441,39 @@ if ($_SESSION['group_session'] == 'peserta') {
                     <!-- START MODUL PRESENTER-->
                     <?php
                     if ($_SESSION['group_session'] == 'presenter') {
+                        $id_presenter   = $_SESSION['id_presenter'];
 
+                        $q_paper    = "SELECT * FROM paper WHERE v_paper='1' AND id_presenter='$id_presenter'";
+                        $d_data     = mysqli_query($konek, $q_paper);
+                        $data       = mysqli_fetch_array($d_data);
+                        $row_paper  = mysqli_num_rows($d_data);
 
+                        $q_payment      = "SELECT * FROM paper as p 
+                        LEFT JOIN transaksi_presenter as tp ON p.paper_id=tp.paper_id 
+                        WHERE tp.v_transfer='1' AND p.paper_id='$data[paper_id]'";
+                        $d_payment      = mysqli_query($konek,$q_payment);
+                        $row_payment    = mysqli_num_rows($d_payment);
+
+                        $q_akhir      = "SELECT * FROM paper as p WHERE v_akhir='1' AND paper_id='$data[paper_id]'";
+                        $d_akhir     = mysqli_query($konek,$q_akhir);
+                        $row_akhir   = mysqli_num_rows($d_akhir);
+
+                        if($row_paper == 0){
+                            $style_paper="style='pointer-events: none; cursor: default; opacity: .35; box-shadow: none;'";
+                         }else{
+                            $style_paper="";
+                         }
+
+                         if($row_payment == 0){
+                            $style_payment="style='pointer-events: none; cursor: default; opacity: .35; box-shadow: none;'";
+                         }else{
+                            $style_payment="";
+                         }
+                         if($row_akhir == 0){
+                            $style_akhir="style='pointer-events: none; cursor: default; opacity: .35; box-shadow: none;'";
+                         }else{
+                            $style_akhir="";
+                         }
                         ?>
                         <li>
                             <a href="<?php echo $base_url; ?>/index.php?p=dashboard-presenter">
@@ -454,17 +491,17 @@ if ($_SESSION['group_session'] == 'peserta') {
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo $base_url; ?>/index.php?p=bukti-transfer">
+                            <a href="<?php echo $base_url; ?>/index.php?p=bukti-transfer" <?php echo $style_paper; ?> >
                                 <i class="fa fa-credit-card"></i> <span>Payment Proofs</span>
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo $base_url; ?>/index.php?p=add-jadwal">
+                            <a href="<?php echo $base_url; ?>/index.php?p=add-jadwal" <?php echo $style_payment; ?>>
                                 <i class="fa fa-calendar-plus-o"></i> <span>Add Schedule</span>
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo $base_url; ?>/index.php?p=add-ppt">
+                            <a href="<?php echo $base_url; ?>/index.php?p=add-ppt" <?php echo $style_akhir; ?>>
                                 <i class="fa fa-file-powerpoint-o"></i> <span>Upload PPT</span>
                             </a>
                         </li>

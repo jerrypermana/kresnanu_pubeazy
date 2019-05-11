@@ -86,7 +86,6 @@ if ($_SESSION['group_session'] == 'peserta') {
                 </div>
             </div>
         </div>
-        </div>
         <!-- /.box -->
         <script>
             $(document).ready(function() {
@@ -107,11 +106,6 @@ if ($_SESSION['group_session'] == 'peserta') {
         <!-- Input addon -->
 
 
-        </div>
-        </div>
-
-        </div>
-        </div>
     <?php
 }
 ?>

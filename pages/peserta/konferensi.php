@@ -1,34 +1,35 @@
 <?php
 if ($_SESSION['group_session'] == 'peserta') {
 
-     if (isset($_POST['submit'])) {
+    if (isset($_POST['submit'])) {
 
-          $id_peserta          = $_SESSION['id_peserta'];
-          $cek_peserta         = mysqli_query($konek, "SELECT * FROM peserta WHERE id_peserta = '$id_peserta'");
-          $data_peserta        = mysqli_fetch_assoc($cek_peserta);
+        $id_peserta          = $_SESSION['id_peserta'];
+        $cek_peserta         = mysqli_query($konek, "SELECT * FROM peserta WHERE id_peserta = '$id_peserta'");
+        $data_peserta        = mysqli_fetch_assoc($cek_peserta);
 
-          $id_konferensi       = mysqli_real_escape_string($konek, $_POST['id_konferensi']);
-          $paket_konferensi    = mysqli_real_escape_string($konek, $_POST['paket_konferensi']);
+        $id_konferensi       = mysqli_real_escape_string($konek, $_POST['id_konferensi']);
+        $paket_konferensi    = mysqli_real_escape_string($konek, $_POST['paket_konferensi']);
 
-          $input_date          = date('Y-m-d');
+        $input_date          = date('Y-m-d');
 
-          if (empty($id_konferensi)) {
-               echo '<script>alert("Mohon pilih nama konferensi")</script>';
-          } else if (empty($paket_konferensi)) {
-               echo '<script>alert("Mohon pilih paket konferensi")</script>';
-          } else {
+        if (empty($id_konferensi)) {
+            echo '<script>alert("Mohon pilih nama konferensi")</script>';
+        } else if (empty($paket_konferensi)) {
+            echo '<script>alert("Mohon pilih paket konferensi")</script>';
+        } else {
 
-               $insert_data   = mysqli_query($konek, "INSERT INTO transaksi_peserta (id_peserta, konferensi_id, paket_id, input_date) VALUES ('$id_peserta', '$id_konferensi', '$paket_konferensi', '$input_date')");
+            $insert_data   = mysqli_query($konek, "INSERT INTO transaksi_peserta (id_peserta, konferensi_id, paket_id, input_date) VALUES ('$id_peserta', '$id_konferensi', '$paket_konferensi', '$input_date')");
 
-               if ($insert_data == TRUE) {
+            if ($insert_data == TRUE) {
 
-                    $email      = $data_peserta['email'];
-                    $realname   = $data_peserta['realname'];
+                $email      = $data_peserta['email'];
+                $realname   = $data_peserta['realname'];
 
-                    $mst_email     = mysqli_query($konek, "SELECT * FROM mst_email WHERE email_id =1 ");
-                    $data_email    = mysqli_fetch_assoc($mst_email);
+                $mst_email     = mysqli_query($konek, "SELECT * FROM mst_email WHERE email_id =1 ");
+                $data_email    = mysqli_fetch_assoc($mst_email);
 
-                    $transaksi_peserta = mysqli_query($konek,
+                $transaksi_peserta = mysqli_query(
+                    $konek,
                     "SELECT
                          tp.transfer_id,
                          p.id_peserta,
@@ -41,26 +42,27 @@ if ($_SESSION['group_session'] == 'peserta') {
                     LEFT JOIN peserta as p ON tp.id_peserta = p.id_peserta
                     LEFT JOIN conference as conf ON tp.konferensi_id = conf.konferensi_id
                     LEFT JOIN paket_konferensi as pk ON tp.paket_id=pk.paket_id
-                    WHERE tp.id_peserta='$id_peserta' ORDER BY transfer_id DESC LIMIT 1");
-                    $data_transaksi = mysqli_fetch_array($transaksi_peserta);
+                    WHERE tp.id_peserta='$id_peserta' ORDER BY transfer_id DESC LIMIT 1"
+                );
+                $data_transaksi = mysqli_fetch_array($transaksi_peserta);
 
-                   
 
 
-                    include "../phpmailer/classes/class.phpmailer.php";
-                    $mail = new PHPMailer;
-                    $mail->IsSMTP();
-                    $mail->SMTPSecure = 'ssl';
-                    $mail->Host = $data_email['SMTP_Host']; //host masing2 provider email
-                    $mail->SMTPDebug = 2;
-                    $mail->Port = 465;
-                    $mail->SMTPAuth = true;
-                    $mail->Username = $data_email['SMTP_User']; //user email
-                    $mail->Password = $data_email['SMTP_Pass']; //password email
-                    $mail->SetFrom("pubeazy.conf@gmail.com", "PubEazy Conference"); //set email pengirim
-                    $mail->Subject = "Pemberitahuan Verifikasi Paper"; //subyek email
-                    $mail->AddAddress($email, $realname);  //tujuan email
-                    $mail->MsgHTML("<table width='100%' border='0' cellspacing='0' cellpadding='0' style='min-width:100%'>
+
+                include "../phpmailer/classes/class.phpmailer.php";
+                $mail = new PHPMailer;
+                $mail->IsSMTP();
+                $mail->SMTPSecure = 'ssl';
+                $mail->Host = $data_email['SMTP_Host']; //host masing2 provider email
+                $mail->SMTPDebug = 2;
+                $mail->Port = 465;
+                $mail->SMTPAuth = true;
+                $mail->Username = $data_email['SMTP_User']; //user email
+                $mail->Password = $data_email['SMTP_Pass']; //password email
+                $mail->SetFrom("pubeazy.conf@gmail.com", "PubEazy Conference"); //set email pengirim
+                $mail->Subject = "Pemberitahuan Pendaftaran Conference"; //subyek email
+                $mail->AddAddress($email, $realname);  //tujuan email
+                $mail->MsgHTML("<table width='100%' border='0' cellspacing='0' cellpadding='0' style='min-width:100%'>
                     <tr>
                     <td style='font-size:0;text-align:center'>
                         <table class='t-width' width='100%' border='0' cellspacing='0' cellpadding='0' style='max-width:170px;display:inline-block;vertical-align:middle'>
@@ -108,29 +110,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                <td class='t-none' width='20'> </td>
                             </tr>
                         </table>
-                        <table width='100%' border='0' cellspacing='0' cellpadding='0' style='border-collapse:collapse;'>
-                            <tr>
-                               <td height='25'> </td>
-                            </tr>
-                            <tr>
-                               <td align='center' style='color:#09c064;font-family:Verdana, Arial, sans-serif;font-size:22px;line-height:26px;overflow-y:hidden'>Your Appointment has been Confirmed!</td>
-                            </tr>
-                            <tr>
-                               <td height='35'> </td>
-                            </tr>
-                            <tr>
-                               <td align='center'><img src='https://www.mytime.com/assets/email_assets/pending_and_confirmation/a-c.png' width='364' alt='' style='display:block;width:100%;max-width:364px;max-height:58px'></td>
-                            </tr>
-                            <tr>
-                               <td height='20'> </td>
-                            </tr>
-
-
-
-                            <tr>
-                               <td height='10'> </td>
-                            </tr>
-                        </table>
+                        
 
                     </td>
                 </tr>
@@ -184,14 +164,16 @@ if ($_SESSION['group_session'] == 'peserta') {
                     </tr>
                 </table>
            </table> ");
-                    $mail->Send();
+                $mail->Send();
 
-                    echo '<script>alert("Berhasil")</script>';
-               } else {
-                    echo '<script>alert("Gagal")</script>';
-               }
-          }
-     }
+                echo '<script>alert("Success")
+                location.replace("' . $base_url . '/index.php?p=dashboard-peserta")</script>';
+            } else {
+                echo '<script>alert("Failed")
+                location.replace("' . $base_url . '/index.php?p=dashboard-peserta")</script>';
+            }
+        }
+    }
 
     ?>
     <!-- Content Header (Page header) -->
@@ -216,41 +198,41 @@ if ($_SESSION['group_session'] == 'peserta') {
                     <!-- form start -->
                     <form role="form" action="" method="POST" name='simpan' onSubmit='return validasi()' enctype="multipart/form-data">
                         <div class="box-body">
-                             <div class="form-group">
-                                 <label>Nama Konferensi</label>
-                                 <select class="form-control conf" name='id_konferensi'>
+                            <div class="form-group">
+                                <label>Nama Konferensi</label>
+                                <select class="form-control conf" name='id_konferensi'>
 
-                                     <option value="" disabled selected>Pilih salah satu...</option>
+                                    <option value="" disabled selected>Pilih salah satu...</option>
 
-                                     <?php
-                                     $select_conf = mysqli_query($konek, "SELECT * FROM conference
+                                    <?php
+                                    $select_conf = mysqli_query($konek, "SELECT * FROM conference
                                      LEFT JOIN mst_ruang as mr ON conference.ruang_id=mr.ruang_id");
 
-                                     while ($row = mysqli_fetch_array($select_conf)) {
+                                    while ($row = mysqli_fetch_array($select_conf)) {
 
-                                         echo "<option value='$row[konferensi_id]'>$row[nama_konferensi]</option>";
-                                     }
-                                     ?>
+                                        echo "<option value='$row[konferensi_id]'>$row[nama_konferensi]</option>";
+                                    }
+                                    ?>
 
-                                 </select>
-                               </div>
+                                </select>
+                            </div>
 
-                               <div class="form-group">
-                                   <label>Paket Konferensi</label>
-                                   <select class="form-control" name='paket_konferensi'>
-                                        <option value="" disabled selected>Pilih salah satu...</option>
+                            <div class="form-group">
+                                <label>Paket Konferensi</label>
+                                <select class="form-control" name='paket_konferensi'>
+                                    <option value="" disabled selected>Pilih salah satu...</option>
 
-                                        <?php
-                                       $paket_conf = mysqli_query($konek, "SELECT * FROM paket_konferensi");
+                                    <?php
+                                    $paket_conf = mysqli_query($konek, "SELECT * FROM paket_konferensi");
 
-                                       while ($row = mysqli_fetch_array($paket_conf)) {
+                                    while ($row = mysqli_fetch_array($paket_conf)) {
 
-                                           echo "<option value='$row[paket_id]'>$row[nama_paket] (Rp $row[biaya])</option>";
-                                       }
-                                       ?>
+                                        echo "<option value='$row[paket_id]'>$row[nama_paket] (Rp $row[biaya])</option>";
+                                    }
+                                    ?>
 
-                                   </select>
-                                 </div>
+                                </select>
+                            </div>
 
 
                         </div>
@@ -264,7 +246,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                 </div>
                 <!-- /.box -->
 
-        </div>
+            </div>
         </div>
 
     <?php

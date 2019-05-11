@@ -26,7 +26,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                 <?php
 
                                 $transfer_id = $_GET['id'];
-                                $query = "SELECT p.paper_id, p.abstrak, pre.instansi,p.judul,pre.member_id,pre.realname,tp.transfer_id,tp.biaya_conf,tp.tgl_transfer,tp.v_transfer,
+                                $query = "SELECT p.paper_id, p.abstrak, pre.afiliasi,p.judul,pre.member_id,pre.realname,tp.transfer_id,tp.biaya_conf,tp.tgl_transfer,tp.v_transfer,
                             tp.nama_transfer,tp.jumlah_transfer,tp.kode_bank,tp.file_bukti,ac.nama_bank, ac.rekening, ac.atas_nama, conf.nama_konferensi,tp.from_bank,
                             conf.start_date,conf.end_date,conf.penyelenggara, mr.nama_ruang FROM paper as p 
                             LEFT JOIN presenter as pre ON p.id_presenter=pre.id_presenter 
@@ -53,7 +53,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
 
                                 if ($hitung == 0) {
                                     echo '<script>alert("Username Tidak Di Temukan")
-									location.replace("' . $base_url . '/index.php?p=dashboard-presenter")</script>';
+									location.replace("' . $base_url . '/index.php?p=dashboard")</script>';
                                 }
 
 
@@ -65,7 +65,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                     <div class="box-header with-border">
                                         <h4 style="text-align: center;"><?php echo $row["judul"] ?></h4>
                                         <h5 style="text-align: center;"><i>Author <?php echo $row["realname"] ?> </i> </h5>
-                                        <h5 style="text-align: center;"><i><?php echo $row["instansi"] ?> </i> </h5>
+                                        <h5 style="text-align: center;"><i><?php echo $row["afiliasi"] ?> </i> </h5>
                                     </div>
                                     <!-- /.box-header -->
                                     <div class="box-body">

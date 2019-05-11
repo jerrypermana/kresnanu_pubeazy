@@ -55,6 +55,8 @@ if ($_SESSION['group_session'] == 'peserta') {
                                     // $start_time = sprintf("%02d:%02d", $row_paper["start_time"] / 60 / 60, ($row_paper["start_time"] % (60 * 60) / 60));
                                     // $end_time   = sprintf("%02d:%02d", $row_paper["end_time"] / 60 / 60, ($row_paper["end_time"] % (60 * 60) / 60));
 
+                                    $transfer_id    = $row_transaksi['transfer_id'];
+
                                     if ($row_transaksi['v_transfer'] == 0) {
 
                                         $status = '<p style="color: red; font-weight: bold;"> Belum Transfer</p>';
@@ -63,10 +65,20 @@ if ($_SESSION['group_session'] == 'peserta') {
                                         $status = '<p style="color: green; font-weight: bold;">Sudah Transfer</p>';
                                     }
 
+                                    if ($row_transaksi['v_transfer'] == 1){
+
+                                        $button ='<a href="'.$base_url.'/cetak.php?transfer_id='.md5($transfer_id).'" target="new"> <button type="button" class="btn btn-warning"><i class="fa fa-print"></i> Cetak Tiket</button></a>';
+                                    }else{
+                                        $button ="<a href='$base_url/index.php?p=bukti-transfer-peserta&id=$row_transaksi[transfer_id]'><button type='button' class='btn btn-default'><i class='fa fa-upload'></i> Upload</button></a>";
+
+                                    }
+
 
                                     echo "<tbody>
                                             <tr>
-                                            <td align='center'><a href='$base_url/index.php?p=bukti-transfer-peserta&id=$row_transaksi[transfer_id]'><button type='button' class='btn btn-default'><i class='fa fa-upload'></i> Upload</button></a>
+                                                <td align='center'>
+                                                $button 
+                                                </td>
                                                 <td>$row_transaksi[nama_konferensi]</td>
                                                 <td>$row_transaksi[penyelenggara] </td>
                                                 <td>$row_transaksi[nama_paket] </td>
@@ -88,7 +100,6 @@ if ($_SESSION['group_session'] == 'peserta') {
                 </div>
             </div>
         </div>
-        </div>
         <!-- /.box -->
         <script>
             $(document).ready(function() {
@@ -109,11 +120,6 @@ if ($_SESSION['group_session'] == 'peserta') {
         <!-- Input addon -->
 
 
-        </div>
-        </div>
-
-        </div>
-        </div>
     <?php
 }
 ?>

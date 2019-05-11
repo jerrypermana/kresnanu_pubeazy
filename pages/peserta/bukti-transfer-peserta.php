@@ -11,7 +11,8 @@ if ($_SESSION['group_session'] == 'peserta') {
     <?php
 
     $transfer_id   = $_GET['id'];
-    $query      = "SELECT tp.transfer_id,p.id_peserta,p.member_id,p.realname,conf.nama_konferensi,conf.penyelenggara,pk.nama_paket,pk.biaya,tp.v_transfer,mr.nama_ruang,conf.start_date
+    $query      = "SELECT tp.transfer_id,p.id_peserta,p.member_id,p.realname,conf.nama_konferensi,conf.penyelenggara,pk.nama_paket,pk.biaya,tp.v_transfer,mr.nama_ruang,
+    conf.start_date,conf.end_date
 FROM transaksi_peserta as tp
 LEFT JOIN peserta as p ON tp.id_peserta=p.id_peserta
 LEFT JOIN conference as conf ON tp.konferensi_id=conf.konferensi_id
@@ -22,14 +23,15 @@ WHERE tp.transfer_id='$transfer_id'";
     $row = mysqli_fetch_array($hasil);
     $hitung = mysqli_num_rows($hasil);
 
-    $tanggal_conf = date('d-m-Y', strtotime($row['tanggal']));
+    $tanggal_conf = date('d-m-Y', strtotime($row['start_date']));
+    $end_conf = date('d-m-Y', strtotime($row['end_date']));
 
     if ($hitung == 0) {
         echo '<script>alert("Paper Tidak Di temukan")
              location.replace("' . $base_url . '../index.php?id=dashboard-peserta")</script>';
     }
     ?>
-    </br>
+    <br>
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -87,7 +89,7 @@ WHERE tp.transfer_id='$transfer_id'";
                                         <tr>
                                             <th style="width: 20%; text-align: right;"><label>Tanggal Konferensi<label></th>
                                             <th style="width: 2%">:</th>
-                                            <th style="width: 78%"><label><?php echo $tanggal_conf; ?><label>
+                                            <th style="width: 78%"><label><?php echo $tanggal_conf.' s/d '. $end_conf; ?><label>
 
                                             </th>
                                         </tr>
