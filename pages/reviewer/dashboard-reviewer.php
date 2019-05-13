@@ -3,17 +3,24 @@ $sess_username = $_SESSION['group_session'];
 
 if ($_SESSION['group_session'] == 'reviewer') {
 
+ $reviewer_id =   $_SESSION['reviewer_id'];
+
      $cek_konferensi    = mysqli_query($konek, "SELECT * FROM conference");
 	$total_konferensi  = mysqli_num_rows($cek_konferensi);
 
-     $cek_paper         = mysqli_query($konek, "SELECT * FROM paper");
+     $cek_paper         = mysqli_query($konek, "SELECT * FROM paper
+     LEFT JOIN paper_reviewer as pr ON paper.paper_id=pr.paper_id 
+     LEFT JOIN reviewer as r ON pr.review_id=r.reviewer_id
+     WHERE pr.review_id='$reviewer_id'");
 	$total_paper       = mysqli_num_rows($cek_paper);
 
-     $cek_presenter     = mysqli_query($konek, "SELECT * FROM presenter");
+     $cek_presenter     = mysqli_query($konek, "SELECT * FROM presenter
+     LEFT JOIN paper ON presenter.id_presenter=paper.id_presenter
+     LEFT JOIN paper_reviewer as pr ON paper.paper_id=pr.paper_id 
+     LEFT JOIN reviewer as r ON pr.review_id=r.reviewer_id
+     WHERE pr.review_id='$reviewer_id'");
 	$total_presenter   = mysqli_num_rows($cek_presenter);
 
-	$cek_peserta       = mysqli_query($konek, "SELECT * FROM peserta");
-	$total_peserta     = mysqli_num_rows($cek_peserta);
 
   ?>
 <!-- Content Header (Page header) -->

@@ -168,7 +168,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                            <li>
+                                <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=paper-review">
                                         <i class="fa fa-book"></i> <span>Paper Review</span>
                                     </a>
@@ -195,10 +195,10 @@ if ($_SESSION['group_session'] == 'peserta') {
                                     </a>
                                 </li>
                                 <!-- <li>
-                                                                                                <a href="<?php echo $base_url; ?>/index.php?p=list-jadwal">
-                                                                                                    <i class="fa fa-calendar-check-o"></i> <span>List Jadwal</span>
-                                                                                                </a>
-                                                                                            </li> -->
+                                                                                                    <a href="<?php echo $base_url; ?>/index.php?p=list-jadwal">
+                                                                                                        <i class="fa fa-calendar-check-o"></i> <span>List Jadwal</span>
+                                                                                                    </a>
+                                                                                                </li> -->
                             </ul>
                         </li>
 
@@ -227,6 +227,16 @@ if ($_SESSION['group_session'] == 'peserta') {
                                 </span>
                             </a>
                             <ul class="treeview-menu">
+                            <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=mst-presenter">
+                                        <i class="fa fa-inbox"></i> <span>Presenter</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=mst-peserta">
+                                        <i class="fa fa-inbox"></i> <span>Participants</span>
+                                    </a>
+                                </li>
 
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=mst-subject">
@@ -388,52 +398,25 @@ if ($_SESSION['group_session'] == 'peserta') {
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-user"></i> <span>Presenter</span>
+                                <i class="fa fa-user"></i> <span>Review Paper</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
                                 <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=list-paper">
+                                    <a href="<?php echo $base_url; ?>/index.php?p=list-paper-reviewer">
                                         <i class="fa fa-book"></i> <span>Daftar Paper</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=v-paper">
-                                        <i class="fa fa-check-square-o"></i> <span>Verification Paper</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=list-transaksi-presenter">
-                                        <i class="fa fa-bank"></i> <span>Verification Payment Proofs</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=list-v-akhir">
-                                        <i class="fa fa-check-square"></i> <span>Verification Full Paper</span>
-                                    </a>
-                                </li>
-
                             </ul>
                         </li>
-                        <!-- <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-users"></i> <span>Participants</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=edit-profile-reviewer">
+                                <i class="fa fa-user"></i> <span>Change Your Profile</span>
                             </a>
-                            <ul class="treeview-menu">
+                        </li>
 
-                                <li>
-                                    <a href="<?php echo $base_url; ?>/index.php?p=list-transaksi-peserta">
-                                        <i class="fa fa-users"></i> <span>Payment Proofs Participant</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> -->
                         <li>
                             <a href="../config/logout.php">
                                 <i class="fa fa-sign-out"></i> <span>Logout</span>
@@ -456,29 +439,29 @@ if ($_SESSION['group_session'] == 'peserta') {
                         $q_payment      = "SELECT * FROM paper as p 
                         LEFT JOIN transaksi_presenter as tp ON p.paper_id=tp.paper_id 
                         WHERE tp.v_transfer='1' AND p.paper_id='$data[paper_id]'";
-                        $d_payment      = mysqli_query($konek,$q_payment);
+                        $d_payment      = mysqli_query($konek, $q_payment);
                         $row_payment    = mysqli_num_rows($d_payment);
 
                         $q_akhir      = "SELECT * FROM paper as p WHERE v_akhir='1' AND paper_id='$data[paper_id]'";
-                        $d_akhir     = mysqli_query($konek,$q_akhir);
+                        $d_akhir     = mysqli_query($konek, $q_akhir);
                         $row_akhir   = mysqli_num_rows($d_akhir);
 
-                        if($row_paper == 0){
-                            $style_paper="style='pointer-events: none; cursor: default; opacity: .35; box-shadow: none;'";
-                         }else{
-                            $style_paper="";
-                         }
+                        if ($row_paper == 0) {
+                            $style_paper = "style='pointer-events: none; cursor: default; opacity: .35; box-shadow: none;'";
+                        } else {
+                            $style_paper = "";
+                        }
 
-                         if($row_payment == 0){
-                            $style_payment="style='pointer-events: none; cursor: default; opacity: .35; box-shadow: none;'";
-                         }else{
-                            $style_payment="";
-                         }
-                         if($row_akhir == 0){
-                            $style_akhir="style='pointer-events: none; cursor: default; opacity: .35; box-shadow: none;'";
-                         }else{
-                            $style_akhir="";
-                         }
+                        if ($row_payment == 0) {
+                            $style_payment = "style='pointer-events: none; cursor: default; opacity: .35; box-shadow: none;'";
+                        } else {
+                            $style_payment = "";
+                        }
+                        if ($row_akhir == 0) {
+                            $style_akhir = "style='pointer-events: none; cursor: default; opacity: .35; box-shadow: none;'";
+                        } else {
+                            $style_akhir = "";
+                        }
                         ?>
                         <li>
                             <a href="<?php echo $base_url; ?>/index.php?p=dashboard-presenter">
@@ -496,7 +479,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo $base_url; ?>/index.php?p=bukti-transfer" <?php echo $style_paper; ?> >
+                            <a href="<?php echo $base_url; ?>/index.php?p=bukti-transfer" <?php echo $style_paper; ?>>
                                 <i class="fa fa-credit-card"></i> <span>Payment Proofs</span>
                             </a>
                         </li>

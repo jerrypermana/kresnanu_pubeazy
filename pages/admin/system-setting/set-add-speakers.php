@@ -74,7 +74,7 @@ if ($_SESSION['group_session'] == 'admin') {
 
                                 <div class="col-sm-9">
                                     
-                                    <textarea id="editor1" name="about_speaker" rows="10" cols="80"> <?php echo $row['about_speaker']; ?></textarea>
+                                    <textarea id="editor1" name="about_speaker" rows="10" cols="80"></textarea>
                                 </div>
                             </div>
 

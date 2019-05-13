@@ -41,11 +41,11 @@ if (isset($_GET["p"])) {
     include 'admin/paper/list-transaksi-presenter.php';
   } elseif ($id == "v-transferpresenter") {
     include 'admin/paper/v-transferpresenter.php';
-  }  elseif ($id == "paper-review") {
+  } elseif ($id == "paper-review") {
     include 'admin/paper/paper-review.php';
   } elseif ($id == "add-review") {
     include 'admin/paper/add-review.php';
-  } 
+  }
   //ADMIN MODUL PESERTA//
   elseif ($id == "list-transaksi-peserta") {
     include 'admin/peserta/list-transaksi-peserta.php';
@@ -74,7 +74,15 @@ if (isset($_GET["p"])) {
     include 'admin/masterfile/mst-ruang.php';
   } elseif ($id == "mst-edit-ruang") {
     include 'admin/masterfile/mst-edit-ruang.php';
-  } elseif ($id == "mst-hapus") {
+  } elseif ($id == "mst-presenter") {
+    include 'admin/masterfile/mst-presenter.php';
+  } elseif ($id == "mst-edit-presenter") {
+    include 'admin/masterfile/mst-edit-presenter.php';
+  }elseif ($id == "mst-peserta") {
+    include 'admin/masterfile/mst-peserta.php';
+  } elseif ($id == "mst-edit-peserta") {
+    include 'admin/masterfile/mst-edit-peserta.php';
+  }  elseif ($id == "mst-hapus") {
     include 'admin/masterfile/mst-hapus.php';
   }
   //MODUL PELAPORAN//
@@ -173,6 +181,12 @@ if (isset($_GET["p"])) {
   } //START MODUL REVIEWER
   elseif ($id == "dashboard-reviewer") {
     include 'reviewer/dashboard-reviewer.php';
+  } elseif ($id == "list-paper-reviewer") {
+    include 'reviewer/paper-review/list-paper-reviewer.php';
+  } elseif ($id == "v-paper-reviewer") {
+    include 'reviewer/paper-review/v-paper-reviewer.php';
+  } elseif ($id == "edit-profile-reviewer") {
+    include 'reviewer/paper-review/edit-profile-reviewer.php';
   } else {
     include 'index.php';
   }

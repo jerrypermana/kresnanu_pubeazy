@@ -55,8 +55,7 @@ if ($_SESSION['group_session'] == 'admin') {
         </div>
         <!-- /.box -->
     </div>
-    </div>
-    </div>
+
 
     <!-- /.box -->
 

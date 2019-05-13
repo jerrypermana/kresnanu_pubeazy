@@ -257,15 +257,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
 
 
         </div>
-        </div>
 
-
-        </div>
-        </div>
-
-        <script>
-
-        </script>
     <?php
 }
 ?>

@@ -95,7 +95,17 @@ if ($_SESSION['group_session'] == 'admin') {
                         halign: 'center',
                         align: 'left',
                         width: '10%',
-                        sortable: true
+                        sortable: true,
+                        formatter: function(value, row) {
+                            if (row.reviewer != '-') {
+                                status_review = "<span class='label label-success'>" + value + "</span>";
+
+                            } else{
+
+                                status_review = "<span class='label label-warning'>None</span>";
+                            }
+                            return status_review;
+                        }
                     },
                     {
                         field: 'v_paper',

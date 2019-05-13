@@ -151,5 +151,38 @@ elseif (isset($_GET['reviewer_id'])) {
       location.replace("' . $base_url . '/index.php?p=list-reviewer)</script>';
   }
 }
+elseif (isset($_GET['peserta_id'])) {
+  $peserta_id = $_GET['peserta_id'];
+
+  $query = "delete from peserta where id_peserta='$peserta_id '";
+  $hapus_peserta       = mysqli_query($konek,$query);
+
+
+ 
+  if ($hapus_peserta) {
+      echo '<script>alert("Data Berhasil Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=mst-peserta")</script>';
+  } else {
+      echo '<script>alert("Data Gagal Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=mst-peserta)</script>';
+  }
+}
+
+elseif (isset($_GET['presenter_id'])) {
+  $presenter_id = $_GET['presenter_id'];
+
+  $query = "delete from presenter where id_presenter='$presenter_id '";
+  $hapus_presenter       = mysqli_query($konek,$query);
+
+
+ 
+  if ($hapus_presenter) {
+      echo '<script>alert("Data Berhasil Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=mst-presenter")</script>';
+  } else {
+      echo '<script>alert("Data Gagal Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=mst-presenter)</script>';
+  }
+}
 ?>
 

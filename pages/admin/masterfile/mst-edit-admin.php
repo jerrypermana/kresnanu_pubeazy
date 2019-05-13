@@ -124,8 +124,6 @@ if ($_SESSION['group_session'] == 'admin') {
         </div>
 
 
-        </div>
-        </div>
 
     <?php
 }

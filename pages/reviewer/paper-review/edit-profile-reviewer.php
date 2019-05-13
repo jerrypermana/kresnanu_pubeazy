@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['group_session'] == 'admin') {
+if ($_SESSION['group_session'] == 'reviewer') {
     ?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -11,7 +11,7 @@ if ($_SESSION['group_session'] == 'admin') {
     <br>
     <?php
 
-    $reviewerID  = $_GET['reviewerID'];
+    $reviewerID  = $_SESSION['reviewer_id'] ;
     $query      = "SELECT * FROM reviewer WHERE reviewer_id='$reviewerID'";
     $hasil = mysqli_query($konek, $query);
     $row = mysqli_fetch_array($hasil);
@@ -37,18 +37,7 @@ if ($_SESSION['group_session'] == 'admin') {
 
             <!-- left column -->
             <div class="col-md-12">
-                <div class="col-md-2" align="right">
-                    <a href="<?php echo $base_url; ?>/index.php?p=list-reviewer" class="btn btn-block btn-primary btn-sm">
-                        <i class="fa fa-list"></i> List Speakers
-                    </a>
-                </div>
-                <div class="col-md-2" align="right">
-                    <a href="<?php echo $base_url; ?>/index.php?p=add-reviewer" class="btn btn-block btn-primary btn-sm">
-                        <i class="fa fa-plus"></i> Add Reviewer
-                    </a>
-                </div>
-                <div class="col-md-8">
-                </div>
+                
 
                 <br>
                 <br>
@@ -56,8 +45,8 @@ if ($_SESSION['group_session'] == 'admin') {
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <i class="fa fa-user-plus"></i>
-                        <h3 class="box-title">Edit reviewer</h3>
+                        <i class="fa fa-user"></i>
+                        <h3 class="box-title"> Change Your Profile</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->

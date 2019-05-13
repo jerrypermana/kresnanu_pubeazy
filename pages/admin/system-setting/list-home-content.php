@@ -98,23 +98,7 @@ if ($_SESSION['group_session'] == 'admin') {
 
             </div>
         </div>
-        </div>
-        <!-- /.box -->
 
-
-        <!-- /.box -->
-
-        <!-- Input addon -->
-
-
-        </div>
-        </div>
-        <!-- Modal Popup untuk Add SUbject-->
-
-
-
-        </div>
-        </div>
     <?php
 }
 ?>

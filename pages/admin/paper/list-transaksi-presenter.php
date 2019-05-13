@@ -49,8 +49,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
             </div>
             <!-- /.box -->
         </div>
-        </div>
-        </div>
+   
 
         <!-- /.box -->
 

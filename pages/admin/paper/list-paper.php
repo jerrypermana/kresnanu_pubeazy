@@ -35,8 +35,6 @@ if ($_SESSION['group_session'] == 'admin') {
         </div>
         <!-- /.box -->
     </div>
-    </div>
-    </div>
 
     <!-- /.box -->
 
@@ -56,7 +54,7 @@ if ($_SESSION['group_session'] == 'admin') {
                         halign: 'center',
                         width: '20%',
                         formatter: function(value, row) {
-                            return "<a href='<?php echo $base_url; ?>/index.php?p=adm-edit-paper&idpaper=" + value + "''><button type='button' class='btn btn-primary'><i class='fa fa-check-square-o'></i> Verify</button></a><br><br><a href='<?php echo $base_url; ?>/index.php?p=hapus&paperID=" + value + "'onClick=\"return confirm('Apakah anda yakin akan menghapus data item " + row.judul + " ?')\"><button type='button' class='btn btn-danger'><i class='fa fa-trash'></i> Delete</button></a>";
+                            return "<a href='<?php echo $base_url; ?>/index.php?p=adm-edit-paper&idpaper=" + value + "''><button type='button' class='btn btn-primary'><i class='fa fa-check-square-o'></i> Verify</button></a><br><br><a href='<?php echo $base_url; ?>/index.php?p=hapus&paper_id=" + value + "'onClick=\"return confirm('Apakah anda yakin akan menghapus data item " + row.judul + " ?')\"><button type='button' class='btn btn-danger'><i class='fa fa-trash'></i> Delete</button></a>";
 
                         }
                     },

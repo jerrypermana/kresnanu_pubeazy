@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'reviewer') {
+if ($_SESSION['group_session'] == 'reviewer') {
     ?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -21,7 +21,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                             <div class="col-md-12">
                                 <?php
 
-                                $paper_id = $_GET['idpaper'];
+                                $paper_id = $_GET['paperID'];
                                 $query = "SELECT paper.judul,paper.input_date,paper.v_paper,paper.abstrak,paper.file_paper,paper.paper_id,pre.realname,
                                 pre.afiliasi,pre.member_id,conf.nama_konferensi,conf.konferensi_id,conf.penyelenggara ,status.status,tp.biaya_conf,paper.komentar
                                 FROM paper 
@@ -43,15 +43,9 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                     $status = "<span class='label label-danger'>$row[status]</span>";
                                 } else {
 
-                                    $status = "<span class='label label-warning'>$row[status]</span>";
+                                    $status = "<span class='label label-warning'>not yet approved</span>";
                                 }
-                                // $select_keyword = mysqli_query($konek, "SELECT mk.keyword_id, mk.keyword as keyword FROM paper LEFT JOIN paper_keyword as pk ON paper.paper_id=pk.paper_id
-                                //           LEFT JOIN mst_keyword as mk ON pk.keyword_id=mk.keyword_id WHERE paper.paper_id='$paper_id'");
 
-                                // $dataArray = [];
-                                // while ($rowKey = mysqli_fetch_assoc($select_keyword)) {
-                                //     array_push($dataArray, $rowKey);
-                                // }
 
                                 $select_keyword = mysqli_query($konek, "SELECT mk.keyword_id, mk.keyword as keyword FROM paper LEFT JOIN paper_keyword as pk ON paper.paper_id=pk.paper_id
                                           LEFT JOIN mst_keyword as mk ON pk.keyword_id=mk.keyword_id WHERE paper.paper_id='$paper_id'");
@@ -147,7 +141,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                                         <div class="box-body">
                                                             <label class="col-sm-2 control-label">Status</label>
                                                             <label class="col-sm-1 control-label">:</label>
-                                                            <label class="col-sm-9 control-label"><?php echo $status; ?></label>
+                                                            <label class="col-sm-9 control-label"><?php echo $status; ?>
                                                         </div>
                                                         <div class="box-body">
                                                             <label class="col-sm-2 control-label">File</label>
