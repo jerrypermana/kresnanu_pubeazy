@@ -30,7 +30,7 @@ if ($_SESSION['group_session'] == 'reviewer') {
 
 <section class="content">
      <div class="row">
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
@@ -44,7 +44,7 @@ if ($_SESSION['group_session'] == 'reviewer') {
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
@@ -58,7 +58,7 @@ if ($_SESSION['group_session'] == 'reviewer') {
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-4 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
@@ -71,20 +71,7 @@ if ($_SESSION['group_session'] == 'reviewer') {
             <a href="#" class="small-box-footer">Lihat daftar presenter <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3><?php echo number_format($total_peserta,0,',','.'); ?></h3>
-              <p>Total Peserta</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person"></i>
-            </div>
-            <a href="#" class="small-box-footer">Lihat daftar peserta <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
+        
         <!-- ./col -->
       </div>
 </section>

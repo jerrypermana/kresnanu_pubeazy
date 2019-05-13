@@ -51,7 +51,7 @@ if ($_SESSION['group_session'] == 'admin') {
                                     <div class="box-header">
                                         <br>
                                         <div class="callout callout-info">
-                                            <span>Reviewer Login : <code>http://[alamat_website]/url.php?p=reviewer-login</code></span>
+                                            <span>Reviewer Login : <code>http://[alamat_website]/url.php?p=login-reviewer</code></span>
                                         </div>
 
                                     </div>

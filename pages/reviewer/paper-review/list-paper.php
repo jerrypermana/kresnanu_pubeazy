@@ -97,18 +97,12 @@ if ($_SESSION['group_session'] == 'admin') {
                         width: '10%',
                         sortable: true,
                         formatter: function(value) {
-                            if (value == '1') {
-                                status = "<span class='label label-success'>Approved</span>";
+                            if (value == '0') {
+                                status = "<label style='color: red;'>Belum Di-Verifikasi </label>";
 
-                            } else if(value == '2')  {
-                                status = "<span class='label label-warning'>Rejected</span>";
+                            } else {
+                                status = " <strong>Sudah Di-Verifikasi</strong>";
 
-                            } else if(value == '3'){
-
-                                status = "<span class='label label-danger'>Revision required</span>";
-                            } else{
-
-                                status = "<span class='label label-warning'>None</span>";
                             }
                             return status;
                         }

@@ -83,7 +83,7 @@ if ($_SESSION['group_session'] == 'admin') {
                                 <label for="inputPassword3" class="col-sm-3 control-label">Password*</label>
 
                                 <div class="col-sm-5">
-                                    <input type="type" name="password" id='password' class="form-control" value='<?php echo $row['password']; ?>' required>
+                                    <input type="password" name="password" id='password' class="form-control" value='<?php echo $row['password']; ?>' required>
                                 </div>
                             </div>
                             <div class="form-group">

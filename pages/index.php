@@ -41,7 +41,12 @@ if (isset($_GET["p"])) {
     include 'admin/paper/list-transaksi-presenter.php';
   } elseif ($id == "v-transferpresenter") {
     include 'admin/paper/v-transferpresenter.php';
-  } //ADMIN MODUL PESERTA//
+  }  elseif ($id == "paper-review") {
+    include 'admin/paper/paper-review.php';
+  } elseif ($id == "add-review") {
+    include 'admin/paper/add-review.php';
+  } 
+  //ADMIN MODUL PESERTA//
   elseif ($id == "list-transaksi-peserta") {
     include 'admin/peserta/list-transaksi-peserta.php';
   } elseif ($id == "v-transfer-peserta") {

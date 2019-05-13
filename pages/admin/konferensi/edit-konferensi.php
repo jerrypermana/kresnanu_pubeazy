@@ -69,7 +69,7 @@ if ($hitung == 0) {
                                             <th style="width: 2%">:</th>
                                             <th style="width: 78%">
                                                 <select class="form-control" name="ruang" style="width: 50%;">
-                                                <option vvalue='<?php echo $row['ruang_id']; ?>'><?php echo $row['nama_ruang']; ?></option>
+                                                <option value='<?php echo $row['ruang_id']; ?>'><?php echo $row['nama_ruang']; ?></option>
                                                     <?php
                                                 $query_ruang = mysqli_query($konek, "SELECT * FROM mst_ruang");
                                                 while ($row_ruang = mysqli_fetch_array($query_ruang)) {

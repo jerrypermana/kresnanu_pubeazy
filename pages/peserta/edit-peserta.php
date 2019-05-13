@@ -232,15 +232,16 @@ if ($_SESSION['group_session'] == 'peserta') {
 
                             $query_edit = "UPDATE peserta set realname='$nama', email='$email', instansi='$instansi', no_hp='$hp', last_update='$tglubah', image = '$nama_file' WHERE id_peserta='$id_peserta'";
 
-                           //echo $query_edit;
+                        // echo $query_edit;
+                        // echo $move;
                            $update = mysqli_query($konek, $query_edit);
                            if ($update) {
                                echo '<script>alert("Profil Pengguna Berhasil di Edit")
-                    location.replace("' . $base_url . '/index.php?p=edit-peserta")</script>';
+                                location.replace("' . $base_url . '/index.php?p=edit-peserta")</script>';
                            } else {
 
                                echo '<script>alert("Profil Pengguna Gagal di Edit")
-                    location.replace("' . $base_url . '/index.php?p=edit-peserta")</script>';
+                             location.replace("' . $base_url . '/index.php?p=edit-peserta")</script>';
                            }
 
                         } else {

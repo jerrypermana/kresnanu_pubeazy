@@ -168,6 +168,11 @@ if ($_SESSION['group_session'] == 'peserta') {
                                 </span>
                             </a>
                             <ul class="treeview-menu">
+                            <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=paper-review">
+                                        <i class="fa fa-book"></i> <span>Paper Review</span>
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="<?php echo $base_url; ?>/index.php?p=list-paper">
                                         <i class="fa fa-book"></i> <span>Daftar Paper</span>
@@ -413,7 +418,7 @@ if ($_SESSION['group_session'] == 'peserta') {
 
                             </ul>
                         </li>
-                        <li class="treeview">
+                        <!-- <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-users"></i> <span>Participants</span>
                                 <span class="pull-right-container">
@@ -428,7 +433,7 @@ if ($_SESSION['group_session'] == 'peserta') {
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="../config/logout.php">
                                 <i class="fa fa-sign-out"></i> <span>Logout</span>

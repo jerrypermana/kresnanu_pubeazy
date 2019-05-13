@@ -4,7 +4,7 @@ if ($_SESSION['group_session'] == 'admin') {
 <!-- Content Header (Page header) -->
 <section class="content-header">
      <h1>
-          Daftar Paper Yang Belum Di-verifikasi
+          Daftar Paper Review
      </h1>
 </section>
 <!-- Main content -->
@@ -47,36 +47,36 @@ if ($_SESSION['group_session'] == 'admin') {
                 pagination: true,
                 search: true,
                 pageSize: 10,
-                url: 'data_api/api-list-paper.php',
+                url: 'data_api/api-list-review-paper.php',
                 singleSelect: true,
                 columns: [{
                         field: 'paper_id',
-                        title: 'SETTING',
+                        title: 'Action',
                         align: 'center',
                         halign: 'center',
                         width: '20%',
                         formatter: function(value, row) {
-                            return "<a href='<?php echo $base_url; ?>/index.php?p=adm-edit-paper&idpaper=" + value + "''><button type='button' class='btn btn-primary'><i class='fa fa-check-square-o'></i> Verify</button></a><br><br><a href='<?php echo $base_url; ?>/index.php?p=hapus&paperID=" + value + "'onClick=\"return confirm('Apakah anda yakin akan menghapus data item " + row.judul + " ?')\"><button type='button' class='btn btn-danger'><i class='fa fa-trash'></i> Delete</button></a>";
+                            return "<a href='<?php echo $base_url; ?>/index.php?p=add-review&paperID=" + value + "''><button type='button' class='btn btn-primary'><i class='fa fa-plus'></i> Review</button></a>";
 
                         }
                     },
                     {
                         field: 'member_id',
-                        title: 'NO ANGGOTA',
+                        title: 'Member_id',
                         halign: 'center',
                         width: '15%',
                         sortable: true
                     },
                     {
                         field: 'nama_konferensi',
-                        title: 'KONFERENSI',
+                        title: 'Conference',
                         halign: 'center',
                         width: '20%',
                         sortable: true
                     },
                     {
                         field: 'realname',
-                        title: 'PENGARANG',
+                        title: 'Author',
                         halign: 'center',
                         align: 'left',
                         width: '10%',
@@ -84,14 +84,22 @@ if ($_SESSION['group_session'] == 'admin') {
                     },
                     {
                         field: 'judul',
-                        title: 'JUDUL',
+                        title: 'Title',
                         halign: 'center',
                         width: '20%',
                         sortable: true
                     },
                     {
+                        field: 'reviewer',
+                        title: 'Reviewer',
+                        halign: 'center',
+                        align: 'left',
+                        width: '10%',
+                        sortable: true
+                    },
+                    {
                         field: 'v_paper',
-                        title: 'STATUS VERIFIKASI',
+                        title: 'Status',
                         halign: 'center',
                         align: 'center',
                         width: '10%',
@@ -112,15 +120,6 @@ if ($_SESSION['group_session'] == 'admin') {
                             }
                             return status;
                         }
-                    },
-                    {
-                        field: 'input_date',
-                        title: 'Tanggal Data Masuk',
-                        align: 'center',
-                        halign: 'center',
-                        sortable: true,
-                        width: '10%',
-                        formatter: tglIndo
                     }
 
                 ],
