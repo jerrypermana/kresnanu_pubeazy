@@ -123,6 +123,7 @@ if ($_SESSION['group_session'] == 'admin') {
             </div>
         </div>
 
+        <div class="btn">
         </div>
 
     <?php
