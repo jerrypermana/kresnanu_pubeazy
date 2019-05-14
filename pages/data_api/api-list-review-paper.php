@@ -21,7 +21,7 @@ include_once "../../config/koneksi.php";
     LEFT JOIN presenter ON p.id_presenter=presenter.id_presenter 
     LEFT JOIN conference ON p.konferensi_id=conference.konferensi_id 
     LEFT JOIN paper_reviewer as pr ON p.paper_id=pr.paper_id 
-    LEFT join reviewer ON pr.review_id=reviewer.reviewer_id ";
+    LEFT JOIN reviewer ON pr.review_id=reviewer.reviewer_id ";
     
     
 //    $ret['rows'] = mysqli_fetch_array($result);

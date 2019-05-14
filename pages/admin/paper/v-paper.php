@@ -63,7 +63,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                 singleSelect: true,
                 columns: [{
                         field: 'paper_id',
-                        title: 'SETTING',
+                        title: 'Action',
                         align: 'center',
                         halign: 'center',
                         width: '20%',
@@ -74,21 +74,21 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                     },
                     {
                         field: 'member_id',
-                        title: 'NO ANGGOTA',
+                        title: 'Member ID',
                         halign: 'center',
                         width: '15%',
                         sortable: true
                     },
                     {
                         field: 'nama_konferensi',
-                        title: 'KONFERENSI',
+                        title: 'Conference',
                         halign: 'center',
                         width: '20%',
                         sortable: true
                     },
                     {
                         field: 'realname',
-                        title: 'PENGARANG',
+                        title: 'Presenter',
                         halign: 'center',
                         align: 'left',
                         width: '10%',
@@ -96,14 +96,14 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                     },
                     {
                         field: 'judul',
-                        title: 'JUDUL',
+                        title: 'Title',
                         halign: 'center',
                         width: '20%',
                         sortable: true
                     },
                     {
                         field: 'v_paper',
-                        title: 'STATUS VERIFIKASI',
+                        title: 'Status',
                         halign: 'center',
                         align: 'center',
                         width: '10%',
@@ -124,10 +124,27 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                             }
                             return status;
                         }
+                    },{
+                        field: 'reviewer',
+                        title: 'Reviewer',
+                        halign: 'center',
+                        align: 'left',
+                        width: '10%',
+                        sortable: true,
+                        formatter: function(value, row) {
+                            if (row.reviewer != '-') {
+                                status_review = "<span class='label label-success'>" + value + "</span>";
+
+                            } else{
+
+                                status_review = "<span class='label label-warning'>None</span>";
+                            }
+                            return status_review;
+                        }
                     },
                     {
-                        field: 'input_date',
-                        title: 'Tanggal Data Masuk',
+                        field: 'last_update',
+                        title: 'Last Update',
                         align: 'center',
                         halign: 'center',
                         sortable: true,

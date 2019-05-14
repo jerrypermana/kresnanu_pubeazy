@@ -46,7 +46,7 @@ if ($_SESSION['group_session'] == 'admin') {
                                     $status = "<span class='label label-danger'>$row[status]</span>";
                                 } else {
 
-                                    $status = "<span class='label label-warning'>$row[status]</span>";
+                                    $status = "<span class='label label-warning'>None</span>";
                                 }
                                 // $select_keyword = mysqli_query($konek, "SELECT mk.keyword_id, mk.keyword as keyword FROM paper LEFT JOIN paper_keyword as pk ON paper.paper_id=pk.paper_id
                                 //           LEFT JOIN mst_keyword as mk ON pk.keyword_id=mk.keyword_id WHERE paper.paper_id='$paper_id'");

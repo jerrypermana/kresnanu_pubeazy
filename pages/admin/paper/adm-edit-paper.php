@@ -238,7 +238,20 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                                                 <label class="col-sm-2 control-label">Verification</label>
                                                                 <div class="col-sm-6">
                                                                     <select class="form-control" name='v_paper'>
+                                                                        <?php 
+                                                                        if($row['v_paper'] != NULL){
+
+                                                                            echo "<option value='$row[v_paper]'>$row[status]</option>";
+                                                                        }else{
+
+                                                                            echo "<option value=''>---- Status ----</option>";
+                                                                        }
+                                                                        
+                                                                        
+                                                                        
+                                                                        ?>
                                                                         <option value=''>---- Status ----</option>
+                                                                        
                                                                         <?php
                                                                         $select_status = mysqli_query($konek, "SELECT * FROM status");
 

@@ -130,7 +130,7 @@ include "config/koneksi.php";
                     } else {
 
                         echo '<script>alert("Login Gagal, Silahkan Masukkan Password dan email dengan benar")
-				location.replace("index.php?p=login-reviewer")</script>';
+				location.replace("url.php?p=login-reviewer")</script>';
                     }
                 }
             }

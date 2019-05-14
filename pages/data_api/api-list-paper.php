@@ -12,12 +12,16 @@ include_once "../../config/koneksi.php";
     $limit  = isset($_GET['limit']) ? $_GET['limit'] : 10;
     $offset = isset($_GET['offset']) ? $_GET['offset'] : 0;
     $search = (isset($_GET['search'])) ? $_GET['search'] : '';
-    $sort   = (isset($_GET['sort'])) ? $_GET['sort'] : 'p.input_date';
+    $sort   = (isset($_GET['sort'])) ? $_GET['sort'] : 'p.last_update';
     $order  = (isset($_GET['order'])) ? $_GET['order'] : 'DESC';
     
-   $SQL_BASE="SELECT p.paper_id,p.id_presenter, presenter.member_id,presenter.realname, p.judul, p.v_paper, p.input_date, p.last_update, conference.nama_konferensi FROM paper as p 
+   $SQL_BASE="SELECT p.paper_id,p.id_presenter, presenter.member_id,presenter.realname, p.judul, p.v_paper, p.input_date, p.last_update, 
+   reviewer.realname as reviewer,conference.nama_konferensi 
+   FROM paper as p 
    LEFT JOIN presenter ON p.id_presenter=presenter.id_presenter
-   LEFT JOIN conference ON p.konferensi_id=conference.konferensi_id";
+   LEFT JOIN conference ON p.konferensi_id=conference.konferensi_id
+   LEFT JOIN paper_reviewer as pr ON p.paper_id=pr.paper_id 
+   LEFT JOIN reviewer ON pr.review_id=reviewer.reviewer_id ";
     
     
 //    $ret['rows'] = mysqli_fetch_array($result);
