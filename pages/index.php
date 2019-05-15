@@ -82,7 +82,11 @@ if (isset($_GET["p"])) {
     include 'admin/masterfile/mst-peserta.php';
   } elseif ($id == "mst-edit-peserta") {
     include 'admin/masterfile/mst-edit-peserta.php';
-  }  elseif ($id == "mst-hapus") {
+  } elseif ($id == "mst-paket") {
+    include 'admin/masterfile/mst-paket.php';
+  } elseif ($id == "mst-edit-paket") {
+    include 'admin/masterfile/mst-edit-paket.php';
+  }   elseif ($id == "mst-hapus") {
     include 'admin/masterfile/mst-hapus.php';
   }
   //MODUL PELAPORAN//

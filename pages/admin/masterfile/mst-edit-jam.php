@@ -106,9 +106,6 @@ if ($hitung == 0) {
     </div>
 
 
-    </div>
-    </div>
-
     <?php 
 }
 ?> 

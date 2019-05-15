@@ -184,5 +184,22 @@ elseif (isset($_GET['presenter_id'])) {
       location.replace("' . $base_url . '/index.php?p=mst-presenter)</script>';
   }
 }
+
+elseif (isset($_GET['paketID'])) {
+  $paket_id = $_GET['paketID'];
+
+  $query = "delete from paket_konferensi where paket_id='$paket_id'";
+  $hapus_paket       = mysqli_query($konek,$query);
+
+
+ 
+  if ($hapus_paket) {
+      echo '<script>alert("Data Berhasil Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=mst-paket")</script>';
+  } else {
+      echo '<script>alert("Data Gagal Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=mst-paket)</script>';
+  }
+}
 ?>
 

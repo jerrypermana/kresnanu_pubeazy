@@ -1,6 +1,6 @@
 <?php
 // Define relative path from this script to mPDF
-$nama_dokumen = 'Formulir Booking Sunrisedive'; //Beri nama file PDF hasil.
+$nama_dokumen = 'Letter_of_Invitation'; //Beri nama file PDF hasil.
 define('_MPDF_PATH', '../mpdf60/');
 include(_MPDF_PATH . "mpdf.php");
 $mpdf = new mPDF('utf-8', 'A4'); // Create new mPDF Document

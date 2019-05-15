@@ -359,6 +359,144 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                     $mst_email     = mysqli_query($konek, "SELECT * FROM mst_email WHERE email_id =1 ");
                                     $data_email    = mysqli_fetch_assoc($mst_email);
 
+                                    $mst_payment     = mysqli_query($konek, "SELECT * FROM account_bank");
+                                   
+
+                                        $send_mail ="<table width='100%' border='0' cellspacing='0' cellpadding='0' style='min-width:100%'>
+                                        <tr>
+                                            <td style='font-size:0;text-align:center'>
+                                                <table class='t-width' width='100%' border='0' cellspacing='0' cellpadding='0' style='max-width:170px;display:inline-block;vertical-align:middle'>
+                                                    <tr>
+                                                        <td height='10' style='font-size:1px;line-height:1px'> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align='center' style='width:170px; height:112px'>
+                                                            <img src='https://pubeazy.kresnanusantara.co.id/img/logo_loi.png' width='100' height='100'>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height='10' style='font-size:1px;line-height:1px'> </td>
+                                                    </tr>
+                                                </table>
+                                                <!--[if mso]></td><td width='360'><![endif]-->
+                                                <table class='t-width' width='100%' border='0' cellspacing='0' cellpadding='0' style='display:inline-block; vertical-align:middle; max-width:360px;'>
+                                                    <tr>
+                                                        <td class='t-none' width='20'> </td>
+                                                        <td>
+                                                            <table width='100%' border='0' cellspacing='0' cellpadding='0' style='min-width:100%'>
+                                                                <tr>
+                                                                    <td height='0' style='font-size:1px;line-height:1px'> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align='left' class='t-center-txt' style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:20px;line-height:24px'>PubEazy Conference</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height='15' style='font-size:1px;line-height:1px'> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align='left' class='t-center-txt' style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:14px;line-height:18px'>Jakarta Selatan</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align='left' class='t-center-txt' style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:14px;line-height:18px'>Jakarta, Indonesia</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align='left' class='t-center-txt' style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:14px;line-height:18px'>(021) 228-2123</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height='10' style='font-size:1px;line-height:1px'> </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <td class='t-none' width='20'> </td>
+                                                    </tr>
+                                                </table>
+                                                <table width='100%' border='0' cellspacing='0' cellpadding='0' style='border-collapse:collapse;'>
+                                                    <tr>
+                                                        <td height='25'> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align='center' style='color:#09c064;font-family:Verdana, Arial, sans-serif;font-size:22px;line-height:26px;overflow-y:hidden'>Your Appointment has been Confirmed!</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height='35'> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align='center'><img src='https://www.mytime.com/assets/email_assets/pending_and_confirmation/a-c.png' width='364' alt='' style='display:block;width:100%;max-width:364px;max-height:58px'></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height='20'> </td>
+                                                    </tr>
+                                        
+                                        
+                                        
+                                                    <tr>
+                                                        <td height='10'> </td>
+                                                    </tr>
+                                                </table>
+                                        
+                                            </td>
+                                        </tr>
+                                        </table>
+                                        <table align='center' style='border-color: #666;' cellpadding='10' width='50%'>
+                                        <tr>
+                                        
+                                            <td style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:14px;line-height:20px' colspan='3'>
+                                                <p>Hi <span></span><span>$row_user[realname]</span><span></span>,</p>
+                                                <p>Appointment confirmed Conference <span></span><span>$row_user[nama_konferensi]</span><span></span> on <span></span><span>" . date("l") . "," . date("F j") . ", " . date("Y") . " at " . date("h:i:sa") . "</span><span></span>. Please find the details below:</p>
+                                            </td>
+                                        
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td width='35%'><strong>Judul</strong></td>
+                                            <td width='1%'><strong>:</strong></td>
+                                            <td width='65%'>$row_user[judul]</td>
+                                        </tr>
+                                        <tr>
+                                            <td width='35%'><strong>Pengarang</strong></td>
+                                            <td width='1%'><strong>:</strong></td>
+                                            <td width='65%'>$row_user[realname]</td>
+                                        </tr>
+                                        <tr>
+                                            <td width='35%'><strong>Status</strong></td>
+                                            <td width='1%'><strong>:</strong></td>
+                                            <td width='65%'>$row_user[status]</td>
+                                        </tr>
+                                        <tr>
+                                            <td width='35%'><strong>Biaya Conference</strong></td>
+                                            <td width='1%'><strong>:</strong></td>
+                                            <td width='65%'>$row_user[biaya_conf]</td>
+                                        </tr>
+                                        <tr>
+                                            <td width='35%'><strong>No Transaksi</strong></td>
+                                            <td width='1%'><strong>:</strong></td>
+                                            <td width='65%'>$row_user[transfer_id]</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border-bottom: 2px solid black' height='5' colspan='3'> </td>
+                                        </tr>
+                                        <tr>
+                                        
+                                            <td colspan='3' align='center'><strong>
+                                                    <p style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:14px;line-height:24px'>Metode Pembayaran </p></strong></td>
+                                        
+                                        </tr>
+                                        <tr>
+                                            <td style='border-bottom: 2px solid black' height='5' colspan='3'> </td>
+                                        </tr>";
+                                        
+                                        while ($data_payment = mysqli_fetch_array($mst_payment)) {
+                                        $send_mail .="   
+                                                <tr style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:14px;line-height:24px'>
+                                                    <td align='center' colspan='3'>$data_payment[nama_bank]<br>No Rek : $data_payment[rekening]<br> a/n $data_payment[atas_nama]</td>           
+                                                </tr>";
+                                                
+                                        
+                                        };
+                                        $send_mail .="<tr>
+                                            <td style='border-bottom: 2px solid black' height='5' colspan='3'> </td>
+                                        </tr></table>"; 
+
 
                                     include "../phpmailer/classes/class.phpmailer.php";
                                     $mail = new PHPMailer;
@@ -373,135 +511,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                     $mail->SetFrom("$data_email[SMTP_User]", "PubEazy Conference"); //set email pengirim
                                     $mail->Subject = "Pemberitahuan Verifikasi Paper"; //subyek email
                                     $mail->AddAddress($email, $realname);  //tujuan email
-                                    $mail->MsgHTML("<table width='100%' border='0' cellspacing='0' cellpadding='0' style='min-width:100%'>
-                                    <tr>
-                                    <td style='font-size:0;text-align:center'>
-                                        <table class='t-width' width='100%' border='0' cellspacing='0' cellpadding='0' style='max-width:170px;display:inline-block;vertical-align:middle'>
-                                            <tr>
-                                                <td height='10' style='font-size:1px;line-height:1px'> </td>
-                                            </tr>
-                                            <tr>
-                                                <td align='center' style='width:170px; height:112px'>
-                                                    logo
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td height='10' style='font-size:1px;line-height:1px'> </td>
-                                            </tr>
-                                        </table>
-                                        <!--[if mso]></td><td width='360'><![endif]-->
-                                        <table class='t-width' width='100%' border='0' cellspacing='0' cellpadding='0' style='display:inline-block; vertical-align:middle; max-width:360px;'>
-                                            <tr>
-                                                <td class='t-none' width='20'> </td>
-                                                <td>
-                                                    <table width='100%' border='0' cellspacing='0' cellpadding='0' style='min-width:100%'>
-                                                        <tr>
-                                                            <td height='0' style='font-size:1px;line-height:1px'> </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td align='left' class='t-center-txt' style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:20px;line-height:24px'>PubEazy Conference</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td height='15' style='font-size:1px;line-height:1px'> </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td align='left' class='t-center-txt' style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:14px;line-height:18px'>Jakarta Selatan</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td align='left' class='t-center-txt' style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:14px;line-height:18px'>Jakarta, Indonesia</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td align='left' class='t-center-txt' style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:14px;line-height:18px'>(021) 228-2123</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td height='10' style='font-size:1px;line-height:1px'> </td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                                <td class='t-none' width='20'> </td>
-                                            </tr>
-                                        </table>
-                                        <table width='100%' border='0' cellspacing='0' cellpadding='0' style='border-collapse:collapse;'>
-                                            <tr>
-                                                <td height='25'> </td>
-                                            </tr>
-                                            <tr>
-                                                <td align='center' style='color:#09c064;font-family:Verdana, Arial, sans-serif;font-size:22px;line-height:26px;overflow-y:hidden'>Your Appointment has been Confirmed!</td>
-                                            </tr>
-                                            <tr>
-                                                <td height='35'> </td>
-                                            </tr>
-                                            <tr>
-                                                <td align='center'><img src='https://www.mytime.com/assets/email_assets/pending_and_confirmation/a-c.png' width='364' alt='' style='display:block;width:100%;max-width:364px;max-height:58px'></td>
-                                            </tr>
-                                            <tr>
-                                                <td height='20'> </td>
-                                            </tr>
-                            
-                            
-                            
-                                            <tr>
-                                                <td height='10'> </td>
-                                            </tr>
-                                        </table>
-                            
-                                    </td>
-                                </tr>
-                            </table>
-                            <table align='center' style='border-color: #666;' cellpadding='10' width='50%'>
-                                <tr>
-                            
-                                    <td style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:14px;line-height:20px' colspan='3'>
-                                        <p>Hi <span></span><span>$row_user[realname]</span><span></span>,</p>
-                                        <p>Appointment confirmed Conference <span></span><span>$row_user[nama_konferensi]</span><span></span> on <span></span><span>" . date("l") . "," . date("F j") . ", " . date("Y") . " at " . date("h:i:sa") . "</span><span></span>. Please find the details below:</p>
-                                    </td>
-                            
-                                </tr>
-                            
-                                <tr>
-                                    <td width='35%'><strong>Judul</strong></td>
-                                    <td width='1%'><strong>:</strong></td>
-                                    <td width='65%'>$row_user[judul]</td>
-                                </tr>
-                                <tr>
-                                    <td width='35%'><strong>Pengarang</strong></td>
-                                    <td width='1%'><strong>:</strong></td>
-                                    <td width='65%'>$row_user[realname]</td>
-                                </tr>
-                                <tr>
-                                    <td width='35%'><strong>Status</strong></td>
-                                    <td width='1%'><strong>:</strong></td>
-                                    <td width='65%'>$row_user[status]</td>
-                                </tr>
-                                <tr>
-                                    <td width='35%'><strong>Biaya Conference</strong></td>
-                                    <td width='1%'><strong>:</strong></td>
-                                    <td width='65%'>$row_user[biaya_conf]</td>
-                                </tr>
-                                <tr>
-                                    <td width='35%'><strong>No Transaksi</strong></td>
-                                    <td width='1%'><strong>:</strong></td>
-                                    <td width='65%'>$row_user[transfer_id]</td>
-                                </tr>
-                                <tr>
-                                    <td style='border-bottom: 2px solid black' height='5' colspan='3'> </td>
-                                </tr>
-                                <tr>
-                            
-                                    <td colspan='3' align='center'><strong>
-                                            <p style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:14px;line-height:24px'>Metode Pembayaran </p><strong></td>
-                            
-                                </tr>
-                                <table align='center' style='border-color: #666;' cellpadding='10' width='210%'>
-                                    <tr>
-                                        <td style='border-top: 2px solid black' colspan='2'> </td>
-                                    </tr>
-                                    <tr style='color:#4f4f4f;font-family:Verdana, Arial, sans-serif;font-size:14px;line-height:24px'>
-                                        <td>BANK MANDIRI<br>No Rek : 02393248234<br> a/n PubEazy Conference <br> Cabang Kebon Jeruk - Perjuangan</td>
-                                        <td align='right'>BANK MANDIRI<br>No Rek : 02393248234<br> a/n PubEazy Conference <br> Cabang Kebon Jeruk - Perjuangan</td>
-                                    </tr>
-                                </table>
-                            </table> ");
+                                    $mail->MsgHTML($send_mail);
                                     $mail->Send();
                                 } else {
 
@@ -545,7 +555,7 @@ if ($_SESSION['group_session'] == 'admin' || $_SESSION['group_session'] == 'revi
                                             </tr>
                                             <tr>
                                                 <td align='center' style='width:170px; height:112px'>
-                                                    logo
+                                                <img src='https://pubeazy.kresnanusantara.co.id/img/logo_loi.png' width='100' height='100'>
                                                 </td>
                                             </tr>
                                             <tr>

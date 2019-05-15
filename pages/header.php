@@ -263,6 +263,11 @@ if ($_SESSION['group_session'] == 'peserta') {
                                         <i class="fa fa-building-o"></i> <span>Room</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo $base_url; ?>/index.php?p=mst-paket">
+                                        <i class="fa fa-list-alt"></i> <span>Package Conference</span>
+                                    </a>
+                                </li>
 
 
                             </ul>
