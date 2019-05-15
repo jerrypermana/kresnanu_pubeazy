@@ -21,17 +21,19 @@ include_once "../../config/koneksi.php";
    pre.realname,pre.afiliasi, 
    p.v_paper,
    loi.tanggal_verifikasi,
-   loi.status 
+   status.status 
    FROM paper as p 
-   LEFT JOIN presenter as pre ON p.id_presenter=pre.id_presenter
-   LEFT JOIN loi ON p.paper_id=loi.paper_id";
+   RIGHT JOIN presenter as pre ON p.id_presenter=pre.id_presenter
+   RIGHT JOIN loi ON p.paper_id=loi.paper_id 
+   RIGHT JOIN status ON p.v_paper=status.status_id
+   WHERE p.v_paper=1 ";
     
     
 //    $ret['rows'] = mysqli_fetch_array($result);
     
     if($search<>''){
 			//get where
-            $SQL_BASE.=' WHERE p.v_paper=1 AND loi.status=1 AND ';
+            $SQL_BASE.='AND ';
             $SQL_BASE.='p.judul like "%'.$search.'%" OR ';
             $SQL_BASE.='pre.member_id like "%'.$search.'%" OR ';
 			$SQL_BASE.='pre.realname like "%'.$search.'%" ';

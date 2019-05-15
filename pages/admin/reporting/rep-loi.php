@@ -81,7 +81,7 @@ if ($_SESSION['group_session'] == 'admin') {
                         },
 
                         {
-                            field: 'status',
+                            field: 'v_paper',
                             title: 'Status',
                             halign: 'center',
                             align: 'center',
@@ -89,11 +89,17 @@ if ($_SESSION['group_session'] == 'admin') {
                             sortable: true,
                             formatter: function(value) {
                                 if (value == '1') {
-                                    status = "<span class='label label-success'>Accepted</span>";
+                                    status = "<span class='label label-success'>Approved</span>";
 
-                                } else {
+                                } else if (value == '2') {
                                     status = "<span class='label label-warning'>Rejected</span>";
 
+                                } else if (value == '3') {
+
+                                    status = "<span class='label label-danger'>Revision required</span>";
+                                } else {
+
+                                    status = "<span class='label label-warning'>None</span>";
                                 }
                                 return status;
                             }

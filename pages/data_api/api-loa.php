@@ -19,19 +19,20 @@ include_once "../../config/koneksi.php";
    p.judul,pre.id_presenter,
    pre.member_id,
    pre.realname,pre.afiliasi, 
-   p.v_paper,
+   p.v_akhir,
    loa.tanggal_verifikasi,
    loa.status 
    FROM paper as p 
-   LEFT JOIN presenter as pre ON p.id_presenter=pre.id_presenter
-   LEFT JOIN loa ON p.paper_id=loa.paper_id";
+   RIGHT JOIN presenter as pre ON p.id_presenter=pre.id_presenter
+   RIGHT JOIN loa ON p.paper_id=loa.paper_id
+   WHERE p.v_akhir=1 ";
     
     
 //    $ret['rows'] = mysqli_fetch_array($result);
     
     if($search<>''){
 			//get where
-            $SQL_BASE.=' WHERE p.v_paper=1 AND loa.status=1 AND ';
+            $SQL_BASE.='AND ';
             $SQL_BASE.='p.judul like "%'.$search.'%" OR ';
             $SQL_BASE.='pre.member_id like "%'.$search.'%" OR ';
 			$SQL_BASE.='pre.realname like "%'.$search.'%" ';
