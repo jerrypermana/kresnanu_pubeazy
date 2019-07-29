@@ -362,6 +362,11 @@ if ($_SESSION['group_session'] == 'peserta') {
                                 <i class="fa fa-file-text-o"></i> <span>Home Content</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>/index.php?p=list-information">
+                                <i class="fa fa-info"></i> <span>Information</span>
+                            </a>
+                        </li>
                         <!-- START SYSTEM SETTING -->
                         <li class="header">SYSTEM SETTING</li>
 

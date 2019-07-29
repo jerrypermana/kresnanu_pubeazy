@@ -201,5 +201,19 @@ elseif (isset($_GET['paketID'])) {
       location.replace("' . $base_url . '/index.php?p=mst-paket)</script>';
   }
 }
-?>
+elseif (isset($_GET['infoID'])) {
+  $infoID = $_GET['infoID'];
 
+  $query            = "delete from home_information where information_id='$infoID'";
+  $hapus_info       = mysqli_query($konek,$query);
+
+
+ 
+  if ($hapus_info) {
+      echo '<script>alert("Data Berhasil Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=list-information")</script>';
+  } else {
+      echo '<script>alert("Data Gagal Di Hapus")
+      location.replace("' . $base_url . '/index.php?p=list-list-information)</script>';
+  }
+}

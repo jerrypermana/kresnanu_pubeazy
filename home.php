@@ -66,7 +66,7 @@ $data_contact  = mysqli_fetch_array($contact_us);
             </div>
             <div class="row">
             <?php
-            $select = mysqli_query($konek, "SELECT * FROM speakers order by sequance ASC ");
+            $select = mysqli_query($konek, "SELECT * FROM speakers order by sequance DESC LIMIT 6");
             while ($row_speak = mysqli_fetch_array($select)) {
 
                 if ($row_speak['image_speaker'] != NULL) {
@@ -105,13 +105,25 @@ $data_contact  = mysqli_fetch_array($contact_us);
         <div class="container">
 
             <div class="section-header">
-                <h2><?php echo $data_contact['contact_title']; ?></h2>
-                <p><?php echo $data_contact['contact_text']; ?></p>
+                <h2>DOWNLOAD</h2>
+                <p>BOOKLED</p>
             </div>
 
             <div class="row contact-info">
+            <?php
+            $select = mysqli_query($konek, "SELECT * FROM home_information order by sequance ASC LIMIT 3");
+            while ($row_info = mysqli_fetch_array($select)) {
 
-                <div class="col-md-4">
+                echo '<div class="col-md-4">
+                <div class="contact-address">
+                    <i class="ion-ios-location-outline"></i>
+                    <h3><a href="'.$base_url.'/url.php?p=information&infoID='.$row_info['information_id'].'">'.$row_info['page_information'].'</h3>
+                    <address></address>
+                </div>
+            </div>';
+
+            }?>
+                <!-- <div class="col-md-4">
                     <div class="contact-address">
                         <i class="ion-ios-location-outline"></i>
                         <h3><?php echo $data_contact['address_title']; ?></h3>
@@ -133,7 +145,7 @@ $data_contact  = mysqli_fetch_array($contact_us);
                         <h3><?php echo $data_contact['email_title']; ?></h3>
                         <p><a href="mailto:<?php echo $data_contact['email_text']; ?>"><?php echo $data_contact['email_text']; ?></a></p>
                     </div>
-                </div>
+                </div> -->
 
             </div>
 

@@ -32,6 +32,8 @@ if (isset($_GET["p"])) {
         include 'speaker-detail.php';
     } elseif ($id == "content") {
         include 'content.php';
+    } elseif ($id == "information") {
+        include 'information.php';
     } elseif ($id == "forget-password") {
         include 'forget-password.php';
     }else {

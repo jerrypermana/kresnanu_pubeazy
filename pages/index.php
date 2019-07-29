@@ -138,6 +138,12 @@ if (isset($_GET["p"])) {
     include 'admin/system-setting/add-home-content.php';
   } elseif ($id == "edit-home-content") {
     include 'admin/system-setting/edit-home-content.php';
+  } elseif ($id == "list-information") {
+    include 'admin/system-setting/list-information.php';
+  } elseif ($id == "add-information-content") {
+    include 'admin/system-setting/add-information-content.php';
+  } elseif ($id == "edit-information") {
+    include 'admin/system-setting/edit-information.php';
   }
   // START MODUL PRESENTER
   elseif ($id == "dashboard-presenter") {
